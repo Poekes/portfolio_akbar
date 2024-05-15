@@ -12,8 +12,11 @@ import ScrollingCustom from "./component/ScrollingCustom";
 export const SelectDataContext = createContext();
 
 function App() {
+  // state khusus ScrollingCustom.jsx (start)
   const [wh, setWh] = useState({ width: 0, height: 0 });
   const [valueScroll, setValueScroll] = useState("");
+  const [statisHeight, setStatisHeight] = useState("");
+  // state khusus ScrollingCustom.jsx (end)
 
   useLayoutEffect((e) => {
     window.onkeyup = (e) => {
@@ -70,6 +73,7 @@ function App() {
     scrolling: {
       wh: [wh, setWh],
       vs: [valueScroll, setValueScroll],
+      staticHeight: [statisHeight, setStatisHeight],
     },
   };
   return (

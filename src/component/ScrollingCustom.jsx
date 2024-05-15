@@ -6,6 +6,7 @@ function ScrollingCustom() {
   const contextAll = useContext(SelectDataContext);
   const [wh, setWh] = contextAll.scrolling.wh;
   const [valueScroll, setValueScroll] = contextAll.scrolling.vs;
+  const [statisHeight, setStatisHeight] = contextAll.scrolling.staticHeight;
 
   const handleScrolling = (event) => {
     if (event.buttons == 1) {
@@ -30,11 +31,10 @@ function ScrollingCustom() {
       width: sb.clientWidth,
       height: sb.clientHeight,
     });
-    // window.onload = (e) => {
-    // };
-
+    setStatisHeight(Math.floor(eval(`${window.innerHeight}*70/100`)) + "px");
     window.onresize = (e) => {
       const sb = document.getElementById("scroll-box");
+      // setStatisHeight(Math.floor(eval(`${window.innerHeight}*70/100`)) + "px");
       setWh({
         width: sb.clientWidth,
         height: wh,
@@ -68,7 +68,7 @@ function ScrollingCustom() {
         >
           <div
             className="border-gray-400 sm:ml-5 md:ml-10 border-2 relative opcAnm"
-            style={{ height: "80%" }}
+            style={{ height: statisHeight }}
             id="scrollbarCustom"
             onMouseMove={handleScrolling}
           >
