@@ -37,7 +37,7 @@ function ScrollingCustom() {
       const sb = document.getElementById("scroll-box");
       setWh({
         width: sb.clientWidth,
-        height: sb.clientHeight,
+        height: wh,
       });
     };
 
