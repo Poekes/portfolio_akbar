@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import { SelectDataContext } from "../App";
 
 function ScrollingCustom() {
@@ -25,13 +25,13 @@ function ScrollingCustom() {
   };
 
   useLayoutEffect(() => {
-    window.onload = (e) => {
-      const sb = document.getElementById("scroll-box");
-      setWh({
-        width: sb.clientWidth,
-        height: sb.clientHeight,
-      });
-    };
+    const sb = document.getElementById("scroll-box");
+    setWh({
+      width: sb.clientWidth,
+      height: sb.clientHeight,
+    });
+    // window.onload = (e) => {
+    // };
 
     window.onresize = (e) => {
       const sb = document.getElementById("scroll-box");
