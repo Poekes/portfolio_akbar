@@ -63,7 +63,7 @@ function App() {
         clsA[Math.floor(Math.random() * clsA.length)];
       bdChild.classList.add(randomClassAnimation);
       streamArrayBlock(random, bdChild, randomClassAnimation);
-    }, 720);
+    }, 420);
   }, []);
 
   let valueContext = {
@@ -121,11 +121,7 @@ function App() {
             consequatur! Tenetur unde deleniti in, dolores, numquam
             necessitatibus sint fugit tempora suscipit amet, ullam vel nihil
             ducimus reiciendis maiores modi. Voluptatem, eligendi. Excepturi
-            reiciendis dolorum, voluptas perferendis magni voluptatem incidunt
-            corporis debitis neque eius quia, dolore consequatur. Omnis odio
-            voluptates placeat aperiam quo numquam quidem debitis, quia
-            nesciunt, doloremque dolore, a sapiente facere nostrum at
-            repudiandae. Sapiente perferendis sint voluptates ad?
+            <h2 className="bg-red-500 text-blue-400">TESTING BANG</h2>
           </p>
         </main>
       </div>
