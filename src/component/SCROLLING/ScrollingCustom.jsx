@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useContext, useLayoutEffect } from "react";
-import { SelectDataContext } from "../App";
+import { SelectDataContext } from "../../App";
+import "./scrollingCustom.css";
 
 function ScrollingCustom() {
   const contextAll = useContext(SelectDataContext);
@@ -31,7 +32,7 @@ function ScrollingCustom() {
       width: sb.clientWidth,
       height: sb.clientHeight,
     });
-    setStatisHeight(Math.floor(eval(`${window.innerHeight}*70/100`)) + "px");
+    setStatisHeight(Math.floor(eval(`${window.innerHeight}*81/100`)) + "px");
     window.onresize = (e) => {
       const sb = document.getElementById("scroll-box");
       // setStatisHeight(Math.floor(eval(`${window.innerHeight}*70/100`)) + "px");
