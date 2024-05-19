@@ -1,32 +1,18 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { useEffect } from "react";
+import "./blockDropAnimation.css";
 
 function BlockAnimation() {
-  const arrayBlockHidden = [-1, 12, 18, 19, 20, 24, 25, 26, 30, 31, 32, 33];
-  let SAB = [];
-  const clsA = ["dd", "dd2", "dd3"];
-  const randomBlock = (e) => {
-    const random = Math.floor(Math.random() * 37) - 1;
-    const arrayHiddenAll = arrayBlockHidden.concat(SAB);
-    if (arrayHiddenAll.includes(random)) {
-      return randomBlock();
-    }
-
-    return random;
-  };
-  const streamArrayBlock = (random, bdChild, classAnimation = "dd2") => {
-    SAB.push(random);
-
-    setTimeout(() => {
-      bdChild.classList.remove(classAnimation);
-      bdChild.style.opacity = 0;
-      const newSAB = SAB.filter((e) => e !== random);
-      SAB = newSAB;
-      setTimeout(() => {
-        bdChild.style.opacity = 1;
-      }, 10);
-    }, 1710);
-  };
+  const arrayBlockHidden = [-1, 12, 18, 19, 20, 24, 25, 26, 30, 31, 32, 33]; //kotak yang di hilangkan
+  let SAB = []; //kotak yang sudah di pilih , akan tergenerate se iring waktu
+  // const clsA = ["dd", "dd2", "dd3"]; // class keyframes css animation
+  const clsA = [
+    ["dd4", 4700],
+    ["dd", 1700],
+    ["dd2", 1700],
+    ["dd3", 1700],
+  ]; // class keyframes css animation
 
   useEffect(() => {
     setInterval(() => {
@@ -35,10 +21,39 @@ function BlockAnimation() {
       const bdChild = bd.childNodes[random];
       const randomClassAnimation =
         clsA[Math.floor(Math.random() * clsA.length)];
-      bdChild.classList.add(randomClassAnimation);
-      streamArrayBlock(random, bdChild, randomClassAnimation);
-    }, 420);
+      bdChild.classList.add(randomClassAnimation[0]);
+      streamArrayBlock(
+        random,
+        bdChild,
+        randomClassAnimation[0],
+        randomClassAnimation[1]
+      );
+    }, 320);
   }, []);
+
+  const randomBlock = (e) => {
+    //generate random number
+    const random = Math.floor(Math.random() * 37) - 1; // random number 0 - 36 (karna ada 36 kotak)
+    const arrayHiddenAll = arrayBlockHidden.concat(SAB); //pengabungkan array SAB dan arrayBlockhidden
+    if (arrayHiddenAll.includes(random)) {
+      // jika terdapat angka random yg sama di dalam array
+      return randomBlock(); // akan terulang kembali function ini sampai tidak ada yg sama
+    }
+
+    return random; // mengembalikan nilai
+  };
+  const streamArrayBlock = (random, bdChild, classAnimation = "dd2", timer) => {
+    SAB.push(random);
+    setTimeout(() => {
+      bdChild.classList.remove(classAnimation);
+      bdChild.style.opacity = 0;
+      const newSAB = SAB.filter((e) => e !== random);
+      SAB = newSAB;
+      setTimeout(() => {
+        bdChild.style.opacity = 1;
+      }, 10);
+    }, timer);
+  };
 
   return (
     <div
