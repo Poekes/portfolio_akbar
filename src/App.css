@@ -66,3 +66,55 @@ body::-webkit-scrollbar {
 
   }
 }
+
+
+.leftAnimation{
+  transition: .4s;
+  -webkit-transition: .4s;
+  -moz-transition: .4s;
+  -ms-transition: .4s;
+  -o-transition: .4s;
+  position: relative;
+  right: 0;
+  left: -100%;
+  opacity: 0;
+  animation: lft 1s ease forwards paused;
+  -webkit-animation: lft 1s ease forwards paused;
+}
+@keyframes lft {
+  0%{
+    opacity: 0;
+  }
+  70%{
+    opacity: 0;
+  }
+  
+  100%{
+    opacity: 1;
+    left: 0;
+  }
+}
+
+
+@media (max-width: 675px) {
+  .leftAnimation{
+    top: -400px;
+    left: 0;
+    opacity: 0;
+    animation: lftt 1s ease forwards paused;
+    -webkit-animation: lftt 1s ease forwards paused;
+}
+
+}
+@keyframes lftt {
+  0%{
+    opacity: 0;
+  }
+  70%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    top: 0;
+  }
+}

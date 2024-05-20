@@ -19,13 +19,14 @@ function App() {
   const [statisHeight, setStatisHeight] = useState("");
   // state khusus ScrollingCustom.jsx (end)
 
-  const animationApsRunning = (target) => {
-    document.querySelector(target).style.animationDuration = "2.8s";
+  const animationApsRunning = (target, time = "2.8s") => {
+    document.querySelector(target).style.animationDuration = time;
     document.querySelector(target).style.animationPlayState = "running";
   };
 
   useLayoutEffect(() => {
     animationApsRunning(".shadow-bottom");
+    animationApsRunning("#nameHead", "1.2s");
     window.onkeydown = (e) => {
       if (e.key == "e") {
         console.log("test");
@@ -50,8 +51,10 @@ function App() {
         <ScrollingCustom />
 
         <main className="container overflow-hidden border-gray-400 border-t-8 mt-5 border-r-8 h-96  w-96">
+          {/* heading */}
           <div className=" flex flex-col sm:flex-row gap-1 sm:gap-9 ml-1 lg:ml-32 items-center pt-2">
-            <div className="rounded overflow-hidden w-48 relative ml-5">
+            {/* div image start */}
+            <div className="rounded overflow-hidden w-48 relative ml-1 sm:ml-5">
               <img
                 className="relative z-10"
                 src="ME_AKBAR.png"
@@ -62,21 +65,39 @@ function App() {
                 style={{ width: "100%", height: "100%" }}
               ></div>
             </div>
-            <h1 className=" text-start text-cyan-100 text-3xl lg:text-5xl font-extralight">
+            {/* div image end */}
+            <h1
+              id="nameHead"
+              className=" text-start text-cyan-100 text-3xl lg:text-5xl leftAnimation"
+            >
               Muhamad Nur Akbar
               <p className="text-xl  ml-5">Junior Front-end </p>
             </h1>
           </div>
-          <p className="text-gray-300   decoration-indigo-500 backdrop-blur-sm ">
-            <span className="text-xl text-cyan-100 ">Halo</span>, saya adalah
-            seorang pelajar di SMK Muhammadiyah Paguyangan, jurusan Rekayasa
-            Perangkat Lunak (RPL). Saya memiliki minat besar dalam pengembangan
-            Front-end developer (web) dan telah mengikuti lima lomba terkait,
-            yaitu satu kali lomba web desain dan empat kali LKS web
-            technologies. Selain itu, saya juga aktif dalam organisasi Hizbul
-            Wathan di sekolah.
-            <h2 className="bg-red-500 text-blue-400">TESTING BANG</h2>
-          </p>
+
+          {/* content */}
+          <div className="grid border grid-cols-2">
+            <div className="border border-red-400">
+              <p className="text-gray-300 max-w-96 decoration-indigo-500 backdrop-blur-sm pr-2 ">
+                <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
+                adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
+                (RPL). Saya memiliki minat yang besar dalam pengembangan web,
+                khususnya sebagai Front-end Developer. Saya telah mengikuti lima
+                lomba terkait bidang ini, yaitu satu kali lomba web desain dan
+                empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
+              </p>
+              <p className="text-gray-300 max-w-96 mt-7 decoration-indigo-500 backdrop-blur-sm pr-2 ">
+                <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
+                adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
+                (RPL). Saya memiliki minat yang besar dalam pengembangan web,
+                khususnya sebagai Front-end Developer. Saya telah mengikuti lima
+                lomba terkait bidang ini, yaitu satu kali lomba web desain dan
+                empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
+              </p>
+              <input type="text" />
+            </div>
+            <div className="border border-cyan-600">test</div>
+          </div>
         </main>
       </div>
     </SelectDataContext.Provider>
