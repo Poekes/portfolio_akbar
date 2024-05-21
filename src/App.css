@@ -96,7 +96,7 @@ body::-webkit-scrollbar {
 }
 
 
-@media (max-width: 675px) {
+@media (max-width: 635px) {
   .leftAnimation{
     top: -400px;
     left: 0;

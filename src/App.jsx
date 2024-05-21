@@ -32,6 +32,10 @@ function App() {
         console.log("test");
       }
     };
+
+    window.onscroll = (e) => {
+      console.log(window.scrollY + window.innerHeight - 100);
+    };
   }, []);
 
   let valueContext = {
@@ -76,9 +80,9 @@ function App() {
           </div>
 
           {/* content */}
-          <div className="grid border grid-cols-2">
-            <div className="border border-red-400">
-              <p className="text-gray-300 max-w-96 decoration-indigo-500 backdrop-blur-sm pr-2 ">
+          <div className="grid border grid-cols-1 md:grid-cols-8 lg:grid-cols-5">
+            <div className="border md:col-span-4 lg:col-span-2 border-red-400 ">
+              <p className="text-gray-300  decoration-indigo-500 backdrop-blur-sm pr-2 ">
                 <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
                 adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
                 (RPL). Saya memiliki minat yang besar dalam pengembangan web,
@@ -86,7 +90,7 @@ function App() {
                 lomba terkait bidang ini, yaitu satu kali lomba web desain dan
                 empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
               </p>
-              <p className="text-gray-300 max-w-96 mt-7 decoration-indigo-500 backdrop-blur-sm pr-2 ">
+              <p className="text-gray-300 mt-7 decoration-indigo-500 backdrop-blur-sm pr-2 ">
                 <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
                 adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
                 (RPL). Saya memiliki minat yang besar dalam pengembangan web,
@@ -94,9 +98,10 @@ function App() {
                 lomba terkait bidang ini, yaitu satu kali lomba web desain dan
                 empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
               </p>
-              <input type="text" />
             </div>
-            <div className="border border-cyan-600">test</div>
+            <div className="border md:col-span-4 lg:col-span-3 border-cyan-600">
+              test
+            </div>
           </div>
         </main>
       </div>

@@ -41,8 +41,6 @@ function ScrollingCustom() {
         width: sb.clientWidth,
         height: wh,
       });
-    };
-    window.onresize = (e) => {
       setStatisHeight(Math.floor(eval(`${window.innerHeight}*81/100`)) + "px");
     };
     window.onscroll = (e) => {
