@@ -24,7 +24,7 @@ body::-webkit-scrollbar {
 }
 .container {
   width: 80%;
-  height: 1200px;
+  /* height: 1200px; */
 }
 
 
@@ -116,5 +116,28 @@ body::-webkit-scrollbar {
   100%{
     opacity: 1;
     top: 0;
+  }
+}
+
+
+
+
+.cbAnimation {
+  position: relative;
+  opacity: 0;
+  animation: cbA 2s forwards ease paused;
+  -webkit-animation: cbA 2s forwards ease paused;
+}
+
+@keyframes cbA {
+  0%{
+    opacity: 0;
+  }
+  30%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    top: 0px;
   }
 }

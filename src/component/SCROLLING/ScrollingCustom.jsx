@@ -4,6 +4,8 @@ import { useContext, useLayoutEffect } from "react";
 import { SelectDataContext } from "../../App";
 import "./scrollingCustom.css";
 
+let scFunction;
+
 function ScrollingCustom() {
   const contextAll = useContext(SelectDataContext);
   const [wh, setWh] = contextAll.scrolling.wh;
@@ -43,7 +45,7 @@ function ScrollingCustom() {
       });
       setStatisHeight(Math.floor(eval(`${window.innerHeight}*81/100`)) + "px");
     };
-    window.onscroll = (e) => {
+    const onscrollCustom = (e) => {
       setValueScroll(
         Math.floor(
           eval(
@@ -56,6 +58,8 @@ function ScrollingCustom() {
           "%"
       );
     };
+
+    scFunction = onscrollCustom;
   }, []);
 
   return (
@@ -85,4 +89,4 @@ function ScrollingCustom() {
   );
 }
 
-export default ScrollingCustom;
+export { ScrollingCustom, scFunction };
