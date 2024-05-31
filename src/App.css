@@ -141,3 +141,49 @@ body::-webkit-scrollbar {
     top: 0px;
   }
 }
+.AnimationUpDown {
+  position: relative;
+  top: -200px;
+  opacity: 0;
+  animation: cbB 2s forwards ease paused;
+  -webkit-animation: cbB 2s forwards ease paused;
+}
+
+@keyframes cbB {
+  0%{
+    opacity: 0;
+  }
+  30%{
+    top: -200px;
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    top: 0px;
+  }
+}
+.AnimationRightLeft {
+  position: relative;
+  top: 0px;
+  right: -100%;
+  opacity: 0;
+  animation: cbLR 1s forwards ease paused;
+  -webkit-animation: cbLR 1s forwards ease paused;
+}
+
+@keyframes cbLR {
+  0%{
+    opacity: 0;
+  }
+  30%{
+    right: -100%;
+    opacity: 0;
+  }
+  60%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    right: 0;
+  }
+}

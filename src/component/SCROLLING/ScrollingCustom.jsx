@@ -4,7 +4,7 @@ import { useContext, useLayoutEffect } from "react";
 import { SelectDataContext } from "../../App";
 import "./scrollingCustom.css";
 
-let scFunction;
+let WINDOW_ONSCROLL_SC;
 
 function ScrollingCustom() {
   const contextAll = useContext(SelectDataContext);
@@ -59,7 +59,7 @@ function ScrollingCustom() {
       );
     };
 
-    scFunction = onscrollCustom;
+    WINDOW_ONSCROLL_SC = onscrollCustom;
   }, []);
 
   return (
@@ -89,4 +89,4 @@ function ScrollingCustom() {
   );
 }
 
-export { ScrollingCustom, scFunction };
+export { ScrollingCustom, WINDOW_ONSCROLL_SC };

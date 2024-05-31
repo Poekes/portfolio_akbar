@@ -15,20 +15,23 @@ function BlockAnimation() {
   ]; // class keyframes css animation
 
   useEffect(() => {
-    setInterval(() => {
-      const bd = document.getElementById("bd");
-      const random = randomBlock();
-      const bdChild = bd.childNodes[random];
-      const randomClassAnimation =
-        clsA[Math.floor(Math.random() * clsA.length)];
-      bdChild.classList.add(randomClassAnimation[0]);
-      streamArrayBlock(
-        random,
-        bdChild,
-        randomClassAnimation[0],
-        randomClassAnimation[1]
-      );
-    }, 320);
+    setTimeout(() => {
+      document.getElementById("bd").classList.remove("opacity-0");
+      setInterval(() => {
+        const bd = document.getElementById("bd");
+        const random = randomBlock();
+        const bdChild = bd.childNodes[random];
+        const randomClassAnimation =
+          clsA[Math.floor(Math.random() * clsA.length)];
+        bdChild.classList.add(randomClassAnimation[0]);
+        streamArrayBlock(
+          random,
+          bdChild,
+          randomClassAnimation[0],
+          randomClassAnimation[1]
+        );
+      }, 320);
+    }, 1000);
   }, []);
 
   const randomBlock = (e) => {
@@ -57,8 +60,8 @@ function BlockAnimation() {
 
   return (
     <div
-      className="absolute top-0 right-0 grid grid-cols-6 gap-2 p-2"
-      style={{ width: "222px", aspectRatio: "1/1" }}
+      className="absolute top-0 right-0 grid grid-cols-6 gap-2 p-2  opacity-0"
+      style={{ width: "222px", aspectRatio: "1/1", transition: "1.4s" }}
       id="bd"
     >
       {Array.from(Array(36).keys()).map((e) => {

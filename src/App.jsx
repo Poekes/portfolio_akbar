@@ -11,9 +11,12 @@ import axios from "axios";
 import BlockAnimation from "./component/KotakAnimation/BlockAnimation";
 import {
   ScrollingCustom,
-  scFunction,
+  WINDOW_ONSCROLL_SC,
 } from "./component/SCROLLING/ScrollingCustom";
+import piagamLKS1 from "../public/Piagam/PiagamLKS1.png";
 export const SelectDataContext = createContext();
+
+let offsetAnimation = {};
 
 function App() {
   // state khusus ScrollingCustom.jsx (start)
@@ -21,22 +24,35 @@ function App() {
   const [valueScroll, setValueScroll] = useState("");
   const [statisHeight, setStatisHeight] = useState("");
   // state khusus ScrollingCustom.jsx (end)
+  const [timeKoding, setTimeKoding] = useState("");
 
+  // state if scroll start
+  // state if scroll end
   const animationApsRunning = (target, time = "2.8s") => {
     document.querySelector(target).style.animationDuration = time;
     document.querySelector(target).style.animationPlayState = "running";
   };
 
+  const offsetTopBody = (elementDom, numberOffset = 0) => {
+    let newNumberOffset = elementDom.offsetTop + numberOffset;
+    if (elementDom.id == "body") {
+      return newNumberOffset;
+    }
+    return offsetTopBody(elementDom.offsetParent, newNumberOffset);
+  };
+
   const ifscrol = (e) => {
-    const positionScrl = window.scrollY + window.innerHeight - 200;
+    const positionScrl = window.scrollY + window.innerHeight - 50;
 
     if (document.querySelector(".shadow-bottom").offsetTop < positionScrl) {
       animationApsRunning("#nameHead", "1.2s");
       animationApsRunning(".shadow-bottom");
     }
-    if (document.getElementById("c1").offsetTop < positionScrl) {
-      animationApsRunning("#c1", "1.2s");
-      const d = document.getElementById("c1").offsetTop;
+    if (offsetAnimation.c1 < positionScrl) {
+      animationApsRunning("#c1", "2s");
+    }
+    if (offsetAnimation.p1 < positionScrl) {
+      animationApsRunning("#p1", "1s");
     }
 
     if (document.getElementById("c2").offsetTop < positionScrl) {
@@ -52,26 +68,35 @@ function App() {
     }
   };
 
-  const [timeKoding, setTimeKoding] = useState("");
-
   useLayoutEffect(() => {
+    window.onload = (e) => {
+      const c1 = offsetTopBody(document.getElementById("c1").parentElement);
+      const p1 = offsetTopBody(document.getElementById("p1").parentElement);
+      offsetAnimation = {
+        c1: c1,
+        p1: p1,
+      };
+      // console.log(offsetAnimation);
+      ifscrol();
+    };
     window.onkeydown = (e) => {
       if (e.key == "e") {
         console.log("test");
       }
     };
-    ifscrol();
     window.onscroll = (e) => {
-      scFunction();
+      WINDOW_ONSCROLL_SC();
       ifscrol();
+      // console.log(window.scrollY + window.innerHeight - 200);
     };
-    const latesDate = new Date("2022 3 juni");
+    const latesDate = new Date("2022 15 jan");
     const nowDate = new Date();
     const sDate = new Date(nowDate.getTime() - latesDate.getTime());
-    const tahun = nowDate.getFullYear() - latesDate.getFullYear();
+    const tahun = sDate.getFullYear() - 1970;
     const bulan = sDate.getMonth();
     const hari = sDate.getDate();
     setTimeKoding(`Sekitar  ${tahun} Tahun, ${bulan} Bulan, ${hari} Hari`);
+    // console.log(offsetTopBody(document.getElementById("p1").parentElement));
   }, []);
 
   let valueContext = {
@@ -90,9 +115,9 @@ function App() {
       <div className="flex relative max-w-screen-2xl m-auto z-20 ">
         <ScrollingCustom />
 
-        <main className="container overflow-hidden border-gray-400 border-t-8 mt-5 border-r-8   w-96">
+        <main className="container  p-1 border-gray-400 border-t-8 mt-5 border-r-8   w-96">
           {/* heading */}
-          <div className=" flex flex-col sm:flex-row gap-1 sm:gap-9 ml-1 lg:ml-32 items-center pt-2">
+          <div className=" flex flex-col z-0 sm:flex-row gap-1 sm:gap-9 ml-1 lg:ml-32 items-center pt-2">
             {/* div image start */}
             <div className="rounded overflow-hidden w-48 relative ml-1 sm:ml-5">
               <img
@@ -116,37 +141,41 @@ function App() {
           </div>
 
           {/* content */}
-          <div className="grid grid-cols-1 md:grid-cols-8 lg:grid-cols-5">
-            <div className=" md:col-span-4 lg:col-span-2 ">
-              <p className="text-gray-300  decoration-indigo-500 backdrop-blur-sm pr-2 ">
-                <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
-                adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
-                (RPL). Saya memiliki minat yang besar dalam pengembangan web,
-                khususnya sebagai Front-end Developer. Saya telah mengikuti lima
-                lomba terkait bidang ini, yaitu satu kali lomba web desain dan
-                empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
-              </p>
-              <p
-                id="c1"
-                className="text-gray-300 mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
-              >
-                Saya mulai menekuni pemrograman sejak awal tahun 2022 hingga
-                sekarang, <b>{timeKoding}.</b> Selama periode tersebut, saya
-                telah mengembangkan berbagai keterampilan, termasuk
-                <b>
-                  <span className="text-[#ec6d4e]"> HTML5</span>,
-                  <span className="text-[#5bd1ff]"> CSS</span>,
-                  <span className="text-[#fffa5b]"> Javascript</span>,
-                  <span className="text-[#4385ff]"> Tailwind</span>,
-                  <span className="text-[#8eff43]"> Bootstrap</span>,
-                  <span className="text-[#4eafff]"> Chakra UI</span>,
-                  <span className="text-[#3cff59]"> Node JS</span>,
-                  <span className="text-[#4685bc]"> PHP</span>,
-                  <span className="text-[#6b9fff]"> React</span>,
-                  <span className="text-[#ff6565]"> Laravel</span>,
-                  <span className="text-[#3b64af]"> MySQL</span>
-                </b>
-              </p>
+          <div className="grid  grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
+            {/* content slide 1 */}
+            <div className=" md:col-span-4 lg:col-span-2 xl:col-span-1 ">
+              <div className="relative">
+                <p
+                  id="p1"
+                  className="AnimationRightLeft text-gray-300 decoration-indigo-500 pt-5 pr-2 "
+                >
+                  <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
+                  adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
+                  (RPL). Saya memiliki minat yang besar dalam pengembangan web,
+                  khususnya sebagai Front-end Developer.
+                  <p className="pt-2">
+                    Saya telah mengikuti lima lomba terkait bidang ini, yaitu
+                    satu kali lomba web desain dan empat kali Lomba Kompetensi
+                    Siswa (LKS) Teknologi Web
+                  </p>
+                </p>
+              </div>
+              <div className="relative">
+                <p
+                  id="c1"
+                  className="text-gray-300 mt-7 AnimationUpDown decoration-indigo-500 pr-2 "
+                >
+                  Saya mulai menekuni pemrograman sejak awal tahun 2022 hingga
+                  sekarang, <b>{timeKoding}.</b> Selama periode tersebut, saya
+                  telah mengembangkan berbagai keterampilan, termasuk
+                  <b>
+                    <span className="text-[#ec6d4e]"> HTML5</span>,
+                    <span className="text-[#5bd1ff]"> CSS</span>,
+                    <span className="text-[#fffa5b]"> Javascript</span> ......
+                  </b>
+                </p>
+              </div>
+              <div className="border w-full h-60"></div>
               <p
                 id="c2"
                 className="text-gray-300 mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
@@ -180,31 +209,30 @@ function App() {
                 lomba terkait bidang ini, yaitu satu kali lomba web desain dan
                 empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
               </p>
-              <p
-                id="c5"
-                className="text-gray-300 mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
-              >
-                <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
-                adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
-                (RPL). Saya memiliki minat yang besar dalam pengembangan web,
-                khususnya sebagai Front-end Developer. Saya telah mengikuti lima
-                lomba terkait bidang ini, yaitu satu kali lomba web desain dan
-                empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
-              </p>
-              <p
-                id="c6"
-                className="text-gray-300 mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
-              >
-                <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
-                adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
-                (RPL). Saya memiliki minat yang besar dalam pengembangan web,
-                khususnya sebagai Front-end Developer. Saya telah mengikuti lima
-                lomba terkait bidang ini, yaitu satu kali lomba web desain dan
-                empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
-              </p>
             </div>
-            <div className="border md:col-span-4 lg:col-span-3 border-cyan-600">
-              test
+            {/* content slide 2 */}
+            <div className=" relative top-[0px] md:top-[-90px] md:left-[-25px] md:col-span-4 lg:col-span-2 xl:col-span-1">
+              <div className="m-auto  w-full  md:ml-4 relative flex items-end justify-center">
+                <div>
+                  <img src={piagamLKS1} alt="" className="w-20 " />
+                </div>
+                <div>
+                  <img
+                    src="/public/Piagam/PiagamUHB.png"
+                    alt=""
+                    // sizes="100"
+                    className="w-32 "
+                  />
+                </div>
+                <div>
+                  <img
+                    src="/public/Piagam/PiagamLKS2.png"
+                    alt=""
+                    className="w-16  "
+                    style={{ filter: "drop-shadow(0 0 5px gray)" }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </main>
