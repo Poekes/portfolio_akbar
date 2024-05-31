@@ -141,13 +141,13 @@ function App() {
           </div>
 
           {/* content */}
-          <div className="grid  grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
+          <div className="grid text-gray-300 grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
             {/* content slide 1 */}
             <div className=" md:col-span-4 lg:col-span-2 xl:col-span-1 ">
               <div className="relative">
                 <p
                   id="p1"
-                  className="AnimationRightLeft text-gray-300 decoration-indigo-500 pt-5 pr-2 "
+                  className="AnimationRightLeft  decoration-indigo-500 pt-5 pr-2 "
                 >
                   <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
                   adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
@@ -163,7 +163,7 @@ function App() {
               <div className="relative">
                 <p
                   id="c1"
-                  className="text-gray-300 mt-7 AnimationUpDown decoration-indigo-500 pr-2 "
+                  className=" mt-7 AnimationUpDown decoration-indigo-500 pr-2 "
                 >
                   Saya mulai menekuni pemrograman sejak awal tahun 2022 hingga
                   sekarang, <b>{timeKoding}.</b> Selama periode tersebut, saya
@@ -178,7 +178,7 @@ function App() {
               <div className="border w-full h-60"></div>
               <p
                 id="c2"
-                className="text-gray-300 mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
+                className=" mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
               >
                 <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
                 adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
@@ -189,7 +189,7 @@ function App() {
               </p>
               <p
                 id="c3"
-                className="text-gray-300 mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
+                className="mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
               >
                 <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
                 adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
@@ -200,7 +200,7 @@ function App() {
               </p>
               <p
                 id="c4"
-                className="text-gray-300 mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
+                className="mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
               >
                 <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
                 adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
@@ -211,8 +211,8 @@ function App() {
               </p>
             </div>
             {/* content slide 2 */}
-            <div className=" relative top-[0px] md:top-[-90px] md:left-[-25px] md:col-span-4 lg:col-span-2 xl:col-span-1">
-              <div className="m-auto  w-full  md:ml-4 relative flex items-end justify-center">
+            <div className=" relative top-[0px] md:top-[-90px] pr-5 md:col-span-4 lg:col-span-2 xl:col-span-1">
+              <div className="m-auto  w-full md:left-[-25px]  relative flex items-end justify-center">
                 <div>
                   <img src={piagamLKS1} alt="" className="w-20 " />
                 </div>
@@ -233,6 +233,11 @@ function App() {
                   />
                 </div>
               </div>
+              <div className="m-5 border w-full h-16">
+                <h2>test</h2>
+              </div>
+              <div className="m-5 border w-full h-16"></div>
+              <div className="m-5 border w-full h-16"></div>
             </div>
           </div>
         </main>
