@@ -105,7 +105,7 @@ function PrestasiMe() {
       <div className="m-auto relative  w-full   flex items-end justify-center">
         <div>
           <img
-            src="/public/Piagam/PiagamLKS1.png"
+            src="Piagam/PiagamLKS1.png"
             id="002fffaa"
             alt=""
             className="w-20  "
@@ -119,7 +119,7 @@ function PrestasiMe() {
         </div>
         <div>
           <img
-            src="/public/Piagam/PiagamUHB.png"
+            src="/Piagam/PiagamUHB.png"
             alt=""
             id="ff3434ad"
             onMouseMove={handlePiagamHover}
@@ -134,7 +134,7 @@ function PrestasiMe() {
         </div>
         <div>
           <img
-            src="/public/Piagam/PiagamLKS2.png"
+            src="/Piagam/PiagamLKS2.png"
             alt=""
             id="6e269aef"
             onMouseMove={handlePiagamHover}
