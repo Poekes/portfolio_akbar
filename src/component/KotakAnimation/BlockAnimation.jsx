@@ -60,7 +60,7 @@ function BlockAnimation() {
 
   return (
     <div
-      className="absolute top-0 right-0 grid grid-cols-6 gap-2 p-2  opacity-0"
+      className="absolute top-[-30px] right-[-20px] sm:top-0 sm:right-0 grid grid-cols-6 gap-2 p-2 scale-75 sm:scale-100  opacity-0"
       style={{ width: "222px", aspectRatio: "1/1", transition: "1.4s" }}
       id="bd"
     >

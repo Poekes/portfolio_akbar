@@ -14,6 +14,8 @@ import {
   WINDOW_ONSCROLL_SC,
 } from "./component/SCROLLING/ScrollingCustom";
 import piagamLKS1 from "../public/Piagam/PiagamLKS1.png";
+import HeaderImgName from "./component/HeaderImgName/HeaderImgName";
+import PrestasiMe from "./component/Prestasi/PrestasiMe";
 export const SelectDataContext = createContext();
 
 let offsetAnimation = {};
@@ -42,14 +44,14 @@ function App() {
   };
 
   const ifscrol = (e) => {
-    const positionScrl = window.scrollY + window.innerHeight - 50;
+    const positionScrl = window.scrollY + window.innerHeight - 210;
 
     if (document.querySelector(".shadow-bottom").offsetTop < positionScrl) {
       animationApsRunning("#nameHead", "1.2s");
       animationApsRunning(".shadow-bottom");
     }
     if (offsetAnimation.c1 < positionScrl) {
-      animationApsRunning("#c1", "2s");
+      animationApsRunning("#c1", "1s");
     }
     if (offsetAnimation.p1 < positionScrl) {
       animationApsRunning("#p1", "1s");
@@ -117,29 +119,7 @@ function App() {
 
         <main className="container  p-1 border-gray-400 border-t-8 mt-5 border-r-8   w-96">
           {/* heading */}
-          <div className=" flex flex-col z-0 sm:flex-row gap-1 sm:gap-9 ml-1 lg:ml-32 items-center pt-2">
-            {/* div image start */}
-            <div className="rounded overflow-hidden w-48 relative ml-1 sm:ml-5">
-              <img
-                className="relative z-10"
-                src="ME_AKBAR.png"
-                alt="foto pembuat website ini"
-              />
-              <div
-                className="absolute top-0 z-20  shadow-bottom"
-                style={{ width: "100%", height: "100%" }}
-              ></div>
-            </div>
-            {/* div image end */}
-            <h1
-              id="nameHead"
-              className=" text-start text-cyan-100 text-3xl lg:text-5xl leftAnimation"
-            >
-              Muhamad Nur Akbar
-              <p className="text-xl  ml-5">Junior Front-end </p>
-            </h1>
-          </div>
-
+          <HeaderImgName />
           {/* content */}
           <div className="grid text-gray-300 grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
             {/* content slide 1 */}
@@ -211,34 +191,8 @@ function App() {
               </p>
             </div>
             {/* content slide 2 */}
-            <div className=" relative top-[0px] md:top-[-90px] pr-5 md:col-span-4 lg:col-span-2 xl:col-span-1">
-              <div className="m-auto  w-full md:left-[-25px]  relative flex items-end justify-center">
-                <div>
-                  <img src={piagamLKS1} alt="" className="w-20 " />
-                </div>
-                <div>
-                  <img
-                    src="/public/Piagam/PiagamUHB.png"
-                    alt=""
-                    // sizes="100"
-                    className="w-32 "
-                  />
-                </div>
-                <div>
-                  <img
-                    src="/public/Piagam/PiagamLKS2.png"
-                    alt=""
-                    className="w-16  "
-                    style={{ filter: "drop-shadow(0 0 5px gray)" }}
-                  />
-                </div>
-              </div>
-              <div className="m-5 border w-full h-16">
-                <h2>test</h2>
-              </div>
-              <div className="m-5 border w-full h-16"></div>
-              <div className="m-5 border w-full h-16"></div>
-            </div>
+            {/* Piagam */}
+            <PrestasiMe />
           </div>
         </main>
       </div>
