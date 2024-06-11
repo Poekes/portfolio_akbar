@@ -21,6 +21,14 @@ export const SelectDataContext = createContext();
 
 let offsetAnimation = {};
 
+const offsetTopBody = (elementDom, numberOffset = 0) => {
+  let newNumberOffset = elementDom.offsetTop + numberOffset;
+  if (elementDom.id == "body") {
+    return newNumberOffset;
+  }
+  return offsetTopBody(elementDom.offsetParent, newNumberOffset);
+};
+
 function App() {
   // state khusus ScrollingCustom.jsx (start)
   const [wh, setWh] = useState({ width: 0, height: 0 });
@@ -39,14 +47,6 @@ function App() {
     document.querySelector(target).style.animationPlayState = "running";
   };
 
-  const offsetTopBody = (elementDom, numberOffset = 0) => {
-    let newNumberOffset = elementDom.offsetTop + numberOffset;
-    if (elementDom.id == "body") {
-      return newNumberOffset;
-    }
-    return offsetTopBody(elementDom.offsetParent, newNumberOffset);
-  };
-
   const ifscrol = (e) => {
     const positionScrl = window.scrollY + window.innerHeight - 210;
 
@@ -55,35 +55,30 @@ function App() {
       animationApsRunning(".shadow-bottom");
     }
     if (offsetAnimation.p1 < positionScrl) {
-      alert("p1 sudah");
       animationApsRunning("#p1", "1s");
     }
 
     if (offsetAnimation.c1 < positionScrl) {
       animationApsRunning("#c1", "1s");
-      alert("c1 sudah");
     }
 
     if (offsetAnimation.LKS1 < positionScrl) {
-      alert("lks1 sudah");
       animationApsRunning("#LKS1", "1.6s");
     }
     if (offsetAnimation.UHB < positionScrl) {
-      alert("uhb sudah");
       animationApsRunning("#UHB", "1.6s");
     }
     if (offsetAnimation.LKS2 < positionScrl) {
-      alert("lk2 sudah");
       animationApsRunning("#LKS2", "1.6s");
     }
     if (offsetAnimation.piagam < positionScrl) {
-      alert("piagam sudah");
       animationApsRunning("#piagam", "1.4s");
     }
   };
+  useLayoutEffect(() => {}, []);
 
   useEffect(() => {
-    window.onload = (e) => {
+    setTimeout(() => {
       const c1 = offsetTopBody(document.getElementById("c1").parentElement);
       const p1 = offsetTopBody(document.getElementById("p1").parentElement);
       const piagam = offsetTopBody(document.getElementById("piagam"));
@@ -99,7 +94,7 @@ function App() {
         LKS2: LKS2 - 30,
       };
       ifscrol();
-    };
+    }, 20);
     window.onkeydown = (e) => {
       if (e.key == "e") {
         console.log("test");
@@ -146,6 +141,9 @@ function App() {
 
         <main className="container  p-1 border-gray-400 border-t-8 mt-5 border-r-8   w-96">
           {/* heading */}
+          <h1 className="text-red-500">
+            test: {offsetAnimation.p1} {offsetAnimation.c1}
+          </h1>
           <HeaderImgName />
           {/* content */}
           <div className="grid text-gray-300 grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
