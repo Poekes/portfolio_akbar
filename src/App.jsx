@@ -141,9 +141,6 @@ function App() {
 
         <main className="container  p-1 border-gray-400 border-t-8 mt-5 border-r-8   w-96">
           {/* heading */}
-          <h1 className="text-red-500">
-            test: {offsetAnimation.p1} {offsetAnimation.c1}
-          </h1>
           <HeaderImgName />
           {/* content */}
           <div className="grid text-gray-300 grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
