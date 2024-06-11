@@ -76,7 +76,7 @@ function App() {
     }
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.onload = (e) => {
       const c1 = offsetTopBody(document.getElementById("c1").parentElement);
       const p1 = offsetTopBody(document.getElementById("p1").parentElement);
