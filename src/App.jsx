@@ -12,6 +12,7 @@ import BlockAnimation from "./component/KotakAnimation/BlockAnimation";
 import {
   ScrollingCustom,
   WINDOW_ONSCROLL_SC,
+  WINDOW_ONRIZE_SC,
 } from "./component/SCROLLING/ScrollingCustom";
 import piagamLKS1 from "../public/Piagam/PiagamLKS1.png";
 import HeaderImgName from "./component/HeaderImgName/HeaderImgName";
@@ -30,6 +31,9 @@ function App() {
 
   // state if scroll start
   // state if scroll end
+  // state prestasi start
+  const [pid, setPid] = useState("");
+  // state prestasi end
   const animationApsRunning = (target, time = "2.8s") => {
     document.querySelector(target).style.animationDuration = time;
     document.querySelector(target).style.animationPlayState = "running";
@@ -50,23 +54,25 @@ function App() {
       animationApsRunning("#nameHead", "1.2s");
       animationApsRunning(".shadow-bottom");
     }
-    if (offsetAnimation.c1 < positionScrl) {
-      animationApsRunning("#c1", "1s");
-    }
     if (offsetAnimation.p1 < positionScrl) {
       animationApsRunning("#p1", "1s");
     }
 
-    if (document.getElementById("c2").offsetTop < positionScrl) {
-      animationApsRunning("#c2", "1.2s");
+    if (offsetAnimation.c1 < positionScrl) {
+      animationApsRunning("#c1", "1s");
     }
 
-    if (document.getElementById("c3").offsetTop < positionScrl) {
-      animationApsRunning("#c3", "1.2s");
+    if (offsetAnimation.LKS1 < positionScrl) {
+      animationApsRunning("#LKS1", "1.6s");
     }
-
-    if (document.getElementById("c4").offsetTop < positionScrl) {
-      animationApsRunning("#c4", "1.2s");
+    if (offsetAnimation.UHB < positionScrl) {
+      animationApsRunning("#UHB", "1.6s");
+    }
+    if (offsetAnimation.LKS2 < positionScrl) {
+      animationApsRunning("#LKS2", "1.6s");
+    }
+    if (offsetAnimation.piagam < positionScrl) {
+      animationApsRunning("#piagam", "1.4s");
     }
   };
 
@@ -74,11 +80,18 @@ function App() {
     window.onload = (e) => {
       const c1 = offsetTopBody(document.getElementById("c1").parentElement);
       const p1 = offsetTopBody(document.getElementById("p1").parentElement);
+      const piagam = offsetTopBody(document.getElementById("piagam"));
+      const LKS1 = offsetTopBody(document.getElementById("LKS1").parentElement);
+      const UHB = offsetTopBody(document.getElementById("UHB").parentElement);
+      const LKS2 = offsetTopBody(document.getElementById("LKS2").parentElement);
       offsetAnimation = {
         c1: c1,
         p1: p1,
+        piagam: piagam,
+        LKS1: LKS1,
+        UHB: UHB,
+        LKS2: LKS2 - 30,
       };
-      // console.log(offsetAnimation);
       ifscrol();
     };
     window.onkeydown = (e) => {
@@ -86,6 +99,12 @@ function App() {
         console.log("test");
       }
     };
+
+    window.onresize = () => {
+      WINDOW_ONRIZE_SC();
+      ifscrol();
+    };
+
     window.onscroll = (e) => {
       WINDOW_ONSCROLL_SC();
       ifscrol();
@@ -107,6 +126,9 @@ function App() {
       vs: [valueScroll, setValueScroll],
       staticHeight: [statisHeight, setStatisHeight],
     },
+    prestasi: {
+      pid: [pid, setPid],
+    },
   };
   return (
     <SelectDataContext.Provider value={valueContext}>
@@ -125,20 +147,19 @@ function App() {
             {/* content slide 1 */}
             <div className=" md:col-span-4 lg:col-span-2 xl:col-span-1 ">
               <div className="relative">
-                <p
-                  id="p1"
-                  className="AnimationRightLeft  decoration-indigo-500 pt-5 pr-2 "
-                >
-                  <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
-                  adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
-                  (RPL). Saya memiliki minat yang besar dalam pengembangan web,
-                  khususnya sebagai Front-end Developer.
+                <div id="p1" className="AnimationRightLeft   ">
+                  <p className="decoration-indigo-500 pt-5 pr-2">
+                    <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
+                    adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
+                    (RPL). Saya memiliki minat yang besar dalam pengembangan
+                    web, khususnya sebagai Front-end Developer.
+                  </p>
                   <p className="pt-2">
                     Saya telah mengikuti lima lomba terkait bidang ini, yaitu
                     satu kali lomba web desain dan empat kali Lomba Kompetensi
                     Siswa (LKS) Teknologi Web
                   </p>
-                </p>
+                </div>
               </div>
               <div className="relative">
                 <p
@@ -155,40 +176,26 @@ function App() {
                   </b>
                 </p>
               </div>
-              <div className="border w-full h-60"></div>
-              <p
-                id="c2"
-                className=" mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
-              >
-                <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
-                adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
-                (RPL). Saya memiliki minat yang besar dalam pengembangan web,
-                khususnya sebagai Front-end Developer. Saya telah mengikuti lima
-                lomba terkait bidang ini, yaitu satu kali lomba web desain dan
-                empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
-              </p>
-              <p
-                id="c3"
-                className="mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
-              >
-                <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
-                adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
-                (RPL). Saya memiliki minat yang besar dalam pengembangan web,
-                khususnya sebagai Front-end Developer. Saya telah mengikuti lima
-                lomba terkait bidang ini, yaitu satu kali lomba web desain dan
-                empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
-              </p>
-              <p
-                id="c4"
-                className="mt-7 cbAnimation decoration-indigo-500 backdrop-blur-sm pr-2 "
-              >
-                <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
-                adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
-                (RPL). Saya memiliki minat yang besar dalam pengembangan web,
-                khususnya sebagai Front-end Developer. Saya telah mengikuti lima
-                lomba terkait bidang ini, yaitu satu kali lomba web desain dan
-                empat kali Lomba Kompetensi Siswa (LKS) Teknologi Web
-              </p>
+              <div className="border w-full  relative   h-52 grid   justify-center ">
+                <div className="border w-80 h-52 grid grid-cols-6 gap-5 justify-center items-center p-6">
+                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
+                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
+                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
+                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
+                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
+                  <div className="aspect-[1/1] w-full ml-[-23px] mt-[85px] scale-[2] bg-slate-100 rotate-45 hover:bg-black "></div>
+                  {/* 2 */}
+                  <div className="aspect-[1/1] w-full ml-[24px] mt-[-130px] bg-slate-100 rotate-45 hover:bg-black "></div>
+                  <div className="aspect-[1/1] w-full ml-[24px] mt-[-130px] bg-slate-100 rotate-45 hover:bg-black "></div>
+                  <div className="aspect-[1/1] w-full ml-[24px] mt-[-130px] bg-slate-100 rotate-45 hover:bg-black "></div>
+                  <div className="aspect-[1/1] w-full ml-[24px] mt-[-130px] bg-slate-100 rotate-45 hover:bg-black "></div>
+                </div>
+                {/* <div className="bg-slate-100   aspect-[1/1]"></div> */}
+              </div>
+
+              {/*  */}
+
+              {/*  */}
             </div>
             {/* content slide 2 */}
             {/* Piagam */}

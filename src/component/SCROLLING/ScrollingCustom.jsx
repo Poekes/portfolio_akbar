@@ -4,7 +4,7 @@ import { useContext, useLayoutEffect } from "react";
 import { SelectDataContext } from "../../App";
 import "./scrollingCustom.css";
 
-let WINDOW_ONSCROLL_SC;
+let WINDOW_ONSCROLL_SC, WINDOW_ONRIZE_SC;
 
 function ScrollingCustom() {
   const contextAll = useContext(SelectDataContext);
@@ -36,7 +36,8 @@ function ScrollingCustom() {
       height: sb.clientHeight,
     });
     setStatisHeight(Math.floor(eval(`${window.innerHeight}*81/100`)) + "px");
-    window.onresize = (e) => {
+
+    const onresize = () => {
       const sb = document.getElementById("scroll-box");
       // setStatisHeight(Math.floor(eval(`${window.innerHeight}*70/100`)) + "px");
       setWh({
@@ -58,7 +59,7 @@ function ScrollingCustom() {
           "%"
       );
     };
-
+    WINDOW_ONRIZE_SC = onresize;
     WINDOW_ONSCROLL_SC = onscrollCustom;
   }, []);
 
@@ -89,4 +90,4 @@ function ScrollingCustom() {
   );
 }
 
-export { ScrollingCustom, WINDOW_ONSCROLL_SC };
+export { ScrollingCustom, WINDOW_ONSCROLL_SC, WINDOW_ONRIZE_SC };
