@@ -55,23 +55,29 @@ function App() {
       animationApsRunning(".shadow-bottom");
     }
     if (offsetAnimation.p1 < positionScrl) {
+      alert("p1 sudah");
       animationApsRunning("#p1", "1s");
     }
 
     if (offsetAnimation.c1 < positionScrl) {
       animationApsRunning("#c1", "1s");
+      alert("c1 sudah");
     }
 
     if (offsetAnimation.LKS1 < positionScrl) {
+      alert("lks1 sudah");
       animationApsRunning("#LKS1", "1.6s");
     }
     if (offsetAnimation.UHB < positionScrl) {
+      alert("uhb sudah");
       animationApsRunning("#UHB", "1.6s");
     }
     if (offsetAnimation.LKS2 < positionScrl) {
+      alert("lk2 sudah");
       animationApsRunning("#LKS2", "1.6s");
     }
     if (offsetAnimation.piagam < positionScrl) {
+      alert("piagam sudah");
       animationApsRunning("#piagam", "1.4s");
     }
   };
@@ -117,7 +123,6 @@ function App() {
     const bulan = sDate.getMonth();
     const hari = sDate.getDate();
     setTimeKoding(`Sekitar  ${tahun} Tahun, ${bulan} Bulan, ${hari} Hari`);
-    // console.log(offsetTopBody(document.getElementById("p1").parentElement));
   }, []);
 
   let valueContext = {
