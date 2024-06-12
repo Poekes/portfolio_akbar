@@ -98,7 +98,8 @@ function App() {
         LKS2: LKS2 + 40,
       };
       ifscrol();
-    }, 20);
+      console.log(offsetAnimation.LKS1);
+    }, 400);
     window.onkeydown = (e) => {
       if (e.key == "e") {
         console.log("test");
