@@ -30,7 +30,7 @@ function BlockAnimation() {
           randomClassAnimation[0],
           randomClassAnimation[1]
         );
-      }, 320);
+      }, 720);
     }, 1000);
   }, []);
 

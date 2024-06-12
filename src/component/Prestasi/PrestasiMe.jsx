@@ -283,11 +283,17 @@ function PrestasiMe() {
                 className="absolute  text-start  left-[-4px]  border-l-4  pl-1 pr-1  bg-gray-800 text-gray-300 w-full   overflow-hidden  transition-all"
                 style={{ borderColor: "#002fffaa" }}
               >
-                <div className="w-full h-full p-1 pb-6 ">
-                  Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
-                  consectetur, adipisicing elit. Dolores tenetur voluptatem quia
-                  velit libero nobis eius quasi eveniet blanditiis fuga. Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Nemo, esse?
+                <div className="w-full h-full p-3 pb-6 space-y-1 cursor-text  ">
+                  <p>Juara 1</p>
+                  <p>
+                    Lomba Kompetensi Siswa (LKS) Tingkat Kabupaten Brebes 2023
+                  </p>
+                  <p>
+                    Teknis: Membuat website toko online menggunakan framework
+                    Laravel dengan fitur-fitur seperti login, logout, keranjang
+                    belanja, dan pencarian barang. Database yang digunakan
+                    adalah MySQL.{" "}
+                  </p>
                 </div>
               </div>
             </button>
@@ -320,10 +326,17 @@ function PrestasiMe() {
                 className="absolute  text-start  left-[-4px]  border-l-4  pl-1 pr-1  bg-gray-800 text-gray-300 w-full   overflow-hidden  transition-all"
                 style={{ borderColor: "#ff3434ad" }}
               >
-                <div className="w-full h-full p-1 pb-6 ">
-                  Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
-                  consectetur, adipisicing elit. Dolores tenetur voluptatem quia
-                  velit libero nobis eius quasi eveniet blanditiis fuga. Lorem
+                <div className="w-full h-full p-3 cursor-text space-y-1 pb-6 ">
+                  <p>Juara 1</p>
+                  <p>
+                    UHB Stundent Competition, dalam rangka Dies Natalies
+                    UNIVERSITAS HARAPAN BANGSA ke-21 tahun 2023
+                  </p>
+                  <p>
+                    Teknis: Membuat company profile Universitas Harapan Bangsa
+                    dengan HTML, CSS, dan JavaScript murni, yang mencakup menu,
+                    logo UHB, dan informasi terkait UHB.
+                  </p>
                 </div>
               </div>
             </button>
@@ -355,18 +368,19 @@ function PrestasiMe() {
                 className="absolute  text-start  left-[-4px]  border-l-4  pl-1 pr-1  bg-gray-800 text-gray-300 w-full   overflow-hidden  transition-all"
                 style={{ borderColor: "#6e269aef" }}
               >
-                <div className="w-full h-full p-1 pb-6 ">
-                  Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet
-                  consectetur, adipisicing elit. Dolores tenetur voluptatem quia
-                  velit libero nobis eius quasi eveniet blanditiis fuga. Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Nemo, esse?
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex,
-                  in. Officiis tempore ipsa nam saepe ad temporibus, suscipit
-                  cupiditate mollitia. Lorem ipsum dolor sit, amet consectetur
-                  adipisicing elit. Amet repudiandae voluptatem voluptates Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Alias
-                  praesentium quia earum qui neque in, eveniet quo numquam modi
-                  eius libero nesciunt distinctio labore asperiores voluptate,
+                <div className="w-full h-full p-3 cursor-text space-y-1 pb-6 ">
+                  <p>Juara 1</p>
+                  <p>
+                    Lomba Kompetensi Siswa (LKS) Tingkat Kabupaten Brebes 2024
+                  </p>
+                  <p>
+                    Teknis: Membuat panel admin untuk mengelola penjualan
+                    barang, menggunakan framework Laravel. Fitur-fiturnya
+                    meliputi login dan logout, informasi barang per bulan dengan
+                    grafik nilai, penambahan pemasok, pencatatan penjualan
+                    barang, dan informasi pembeli. Database yang di gunakan
+                    MySQL.
+                  </p>
                 </div>
               </div>
             </button>
