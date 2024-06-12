@@ -283,7 +283,7 @@ function PrestasiMe() {
                 className="absolute  text-start  left-[-4px]  border-l-4  pl-1 pr-1  bg-gray-800 text-gray-300 w-full   overflow-hidden  transition-all"
                 style={{ borderColor: "#002fffaa" }}
               >
-                <div className="w-full h-full p-3 pb-6 space-y-1 cursor-text  ">
+                <div className="w-full h-full p-3 pb-6 space-y-2 cursor-text  ">
                   <p>Juara 1</p>
                   <p>
                     Lomba Kompetensi Siswa (LKS) Tingkat Kabupaten Brebes 2023
@@ -326,11 +326,12 @@ function PrestasiMe() {
                 className="absolute  text-start  left-[-4px]  border-l-4  pl-1 pr-1  bg-gray-800 text-gray-300 w-full   overflow-hidden  transition-all"
                 style={{ borderColor: "#ff3434ad" }}
               >
-                <div className="w-full h-full p-3 cursor-text space-y-1 pb-6 ">
+                <div className="w-full h-full p-3 cursor-text space-y-2 pb-6 ">
                   <p>Juara 1</p>
+                  <p>UHB Stundent Competition</p>
                   <p>
-                    UHB Stundent Competition, dalam rangka Dies Natalies
-                    UNIVERSITAS HARAPAN BANGSA ke-21 tahun 2023
+                    dalam rangka Dies Natalies UNIVERSITAS HARAPAN BANGSA ke-21
+                    tahun 2023
                   </p>
                   <p>
                     Teknis: Membuat company profile Universitas Harapan Bangsa
@@ -368,7 +369,7 @@ function PrestasiMe() {
                 className="absolute  text-start  left-[-4px]  border-l-4  pl-1 pr-1  bg-gray-800 text-gray-300 w-full   overflow-hidden  transition-all"
                 style={{ borderColor: "#6e269aef" }}
               >
-                <div className="w-full h-full p-3 cursor-text space-y-1 pb-6 ">
+                <div className="w-full h-full p-3 cursor-text space-y-2 pb-6 ">
                   <p>Juara 1</p>
                   <p>
                     Lomba Kompetensi Siswa (LKS) Tingkat Kabupaten Brebes 2024

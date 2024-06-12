@@ -7,7 +7,6 @@ import {
   useLayoutEffect,
 } from "react";
 import "./App.css";
-import axios from "axios";
 import BlockAnimation from "./component/KotakAnimation/BlockAnimation";
 import {
   ScrollingCustom,
@@ -17,6 +16,7 @@ import {
 import piagamLKS1 from "../public/Piagam/PiagamLKS1.png";
 import HeaderImgName from "./component/HeaderImgName/HeaderImgName";
 import PrestasiMe from "./component/Prestasi/PrestasiMe";
+import isMobilePhone from "validator/lib/isMobilePhone";
 export const SelectDataContext = createContext();
 
 let offsetAnimation = {};
@@ -77,6 +77,11 @@ function App() {
   };
 
   useEffect(() => {
+    if (isMobilePhone("08127361821736e")) {
+      console.log("no telp benar");
+    } else {
+      console.log("no telp salah");
+    }
     setTimeout(() => {
       const c1 = offsetTopBody(document.getElementById("c1").parentElement);
       const p1 = offsetTopBody(document.getElementById("p1").parentElement);
