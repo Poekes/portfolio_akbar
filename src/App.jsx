@@ -93,9 +93,9 @@ function App() {
         c1: c1,
         p1: p1,
         piagam: piagam,
-        LKS1: LKS1,
-        UHB: UHB,
-        LKS2: LKS2 - 30,
+        LKS1: LKS1 + 120,
+        UHB: UHB + 70,
+        LKS2: LKS2 + 40,
       };
       ifscrol();
     }, 20);
