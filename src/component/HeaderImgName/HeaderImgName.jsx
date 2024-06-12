@@ -4,11 +4,15 @@ function HeaderImgName() {
   return (
     <div className=" flex flex-col z-0 sm:flex-row gap-1 sm:gap-9 ml-1 lg:ml-32 items-center pt-2">
       {/* div image start */}
-      <div className="rounded overflow-hidden w-48 relative ml-1 sm:ml-5">
+      <div
+        className="rounded overflow-hidden w-48 relative ml-1 sm:ml-5"
+        style={{ height: "305px" }}
+      >
         <img
           className="relative z-10"
           src="ME_AKBAR.png"
           alt="foto pembuat website ini"
+          id="meImg"
         />
         <div
           className="absolute top-0 z-20  shadow-bottom"

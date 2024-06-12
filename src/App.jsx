@@ -93,13 +93,13 @@ function App() {
         c1: c1,
         p1: p1,
         piagam: piagam,
-        LKS1: LKS1 + 120,
-        UHB: UHB + 70,
-        LKS2: LKS2 + 40,
+        LKS1: LKS1,
+        UHB: UHB,
+        LKS2: LKS2 - 20,
       };
       ifscrol();
       console.log(offsetAnimation.LKS1);
-    }, 400);
+    }, 20);
     window.onkeydown = (e) => {
       if (e.key == "e") {
         console.log("test");
