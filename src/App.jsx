@@ -75,7 +75,6 @@ function App() {
       animationApsRunning("#piagam", "1.4s");
     }
   };
-  useLayoutEffect(() => {}, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -94,7 +93,7 @@ function App() {
         LKS2: LKS2 - 30,
       };
       ifscrol();
-    }, 20);
+    }, 10);
     window.onkeydown = (e) => {
       if (e.key == "e") {
         console.log("test");
