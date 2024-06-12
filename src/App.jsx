@@ -99,7 +99,7 @@ function App() {
       };
       ifscrol();
       console.log(offsetAnimation.LKS1);
-    }, 20);
+    }, 200);
     window.onkeydown = (e) => {
       if (e.key == "e") {
         console.log("test");
