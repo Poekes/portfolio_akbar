@@ -76,7 +76,7 @@ function App() {
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isMobilePhone("08127361821736e")) {
       console.log("no telp benar");
     } else {
@@ -98,7 +98,7 @@ function App() {
         LKS2: LKS2 - 30,
       };
       ifscrol();
-    }, 10);
+    }, 20);
     window.onkeydown = (e) => {
       if (e.key == "e") {
         console.log("test");
