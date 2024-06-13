@@ -17,6 +17,8 @@ import piagamLKS1 from "../public/Piagam/PiagamLKS1.png";
 import HeaderImgName from "./component/HeaderImgName/HeaderImgName";
 import PrestasiMe from "./component/Prestasi/PrestasiMe";
 import isMobilePhone from "validator/lib/isMobilePhone";
+import { useDebounce } from "use-debounce";
+import ArticleSkills from "./component/ArticleSkill/ArticleSkills";
 export const SelectDataContext = createContext();
 
 let offsetAnimation = {};
@@ -36,7 +38,15 @@ function App() {
   const [statisHeight, setStatisHeight] = useState("");
   // state khusus ScrollingCustom.jsx (end)
   const [timeKoding, setTimeKoding] = useState("");
-
+  // const [noTelp, setNoTelp] = useState("");
+  // const [telpD] = useDebounce(noTelp, 800);
+  // useEffect(() => {
+  //   if (isMobilePhone(telpD)) {
+  //     alert("no telp benar");
+  //   } else {
+  //     alert("no telp salah");
+  //   }
+  // }, [telpD]);
   // state if scroll start
   // state if scroll end
   // state prestasi start
@@ -134,6 +144,9 @@ function App() {
     prestasi: {
       pid: [pid, setPid],
     },
+    articleSkill: {
+      timeK: [timeKoding, setTimeKoding],
+    },
   };
   return (
     <SelectDataContext.Provider value={valueContext}>
@@ -141,7 +154,7 @@ function App() {
         <BlockAnimation />
       </div>
 
-      <div className="flex relative max-w-screen-2xl m-auto z-20 ">
+      <div className="flex relative max-w-screen-2xl m-auto z-20 overflow-hidden">
         <ScrollingCustom />
 
         <main className="container  p-1 border-gray-400 border-t-8 mt-5 border-r-8   w-96">
@@ -150,60 +163,8 @@ function App() {
           {/* content */}
           <div className="grid text-gray-300 grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
             {/* content slide 1 */}
-            <div className=" md:col-span-4 lg:col-span-2 xl:col-span-1 ">
-              <div className="relative">
-                <div id="p1" className="AnimationRightLeft   ">
-                  <p className="decoration-indigo-500 pt-5 pr-2">
-                    <span className="text-xl text-cyan-100 ">Hallo</span>, Saya
-                    adalah seorang pelajar SMK jurusan Rekayasa Perangkat Lunak
-                    (RPL). Saya memiliki minat yang besar dalam pengembangan
-                    web, khususnya sebagai Front-end Developer.
-                  </p>
-                  <p className="pt-2">
-                    Saya telah mengikuti lima lomba terkait bidang ini, yaitu
-                    satu kali lomba web desain dan empat kali Lomba Kompetensi
-                    Siswa (LKS) Teknologi Web
-                  </p>
-                </div>
-              </div>
-              <div className="relative">
-                <p
-                  id="c1"
-                  className=" mt-7 AnimationUpDown decoration-indigo-500 pr-2 "
-                >
-                  Saya mulai menekuni pemrograman sejak awal tahun 2022 hingga
-                  sekarang, <b>{timeKoding}.</b> Selama periode tersebut, saya
-                  telah mengembangkan berbagai keterampilan, termasuk
-                  <b>
-                    <span className="text-[#ec6d4e]"> HTML5</span>,
-                    <span className="text-[#5bd1ff]"> CSS</span>,
-                    <span className="text-[#fffa5b]"> Javascript</span> ......
-                  </b>
-                </p>
-              </div>
-              <div className="border w-full  relative   h-52 grid   justify-center ">
-                <div className="border w-80 h-52 grid grid-cols-6 gap-5 justify-center items-center p-6">
-                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
-                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
-                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
-                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
-                  <div className="aspect-[1/1] w-full  bg-slate-100 rotate-45 hover:bg-black"></div>
-                  <div className="aspect-[1/1] w-full ml-[-23px] mt-[85px] scale-[2] bg-slate-100 rotate-45 hover:bg-black "></div>
-                  {/* 2 */}
-                  <div className="aspect-[1/1] w-full ml-[24px] mt-[-130px] bg-slate-100 rotate-45 hover:bg-black "></div>
-                  <div className="aspect-[1/1] w-full ml-[24px] mt-[-130px] bg-slate-100 rotate-45 hover:bg-black "></div>
-                  <div className="aspect-[1/1] w-full ml-[24px] mt-[-130px] bg-slate-100 rotate-45 hover:bg-black "></div>
-                  <div className="aspect-[1/1] w-full ml-[24px] mt-[-130px] bg-slate-100 rotate-45 hover:bg-black "></div>
-                </div>
-                {/* <div className="bg-slate-100   aspect-[1/1]"></div> */}
-              </div>
-
-              {/*  */}
-
-              {/*  */}
-            </div>
-            {/* content slide 2 */}
-            {/* Piagam */}
+            <ArticleSkills />
+            {/* piagam */}
             <PrestasiMe />
           </div>
         </main>
