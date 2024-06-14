@@ -84,6 +84,10 @@ function App() {
     if (offsetAnimation.piagam < positionScrl) {
       animationApsRunning("#piagam", "1.4s");
     }
+    if (offsetAnimation.BXS < positionScrl) {
+      document.getElementById("boxSkill").style.opacity = 1;
+      document.getElementById("awnS").style.opacity = 1;
+    }
   };
 
   useLayoutEffect(() => {
@@ -99,6 +103,9 @@ function App() {
       const LKS1 = offsetTopBody(document.getElementById("LKS1").parentElement);
       const UHB = offsetTopBody(document.getElementById("UHB").parentElement);
       const LKS2 = offsetTopBody(document.getElementById("LKS2").parentElement);
+      const BXS = offsetTopBody(
+        document.getElementById("boxSkill").parentElement
+      );
       offsetAnimation = {
         c1: c1,
         p1: p1,
@@ -106,6 +113,7 @@ function App() {
         LKS1: LKS1,
         UHB: UHB,
         LKS2: LKS2 - 20,
+        BXS: BXS,
       };
       ifscrol();
       console.log(offsetAnimation.LKS1);
@@ -113,6 +121,11 @@ function App() {
     window.onkeydown = (e) => {
       if (e.key == "e") {
         console.log("test");
+        const boxS = document.getElementById("boxSkill");
+        boxS.childNodes[0].classList.add("AUpDown");
+        setTimeout(() => {
+          boxS.childNodes[0].classList.remove("AUpDown");
+        }, 1000);
       }
     };
 
@@ -166,6 +179,16 @@ function App() {
             <ArticleSkills />
             {/* piagam */}
             <PrestasiMe />
+          </div>
+          <div className="  relative top-[-60px]">
+            <h1 className="text-center pt-0 mt-0 m-6">project saya</h1>
+            <div className="w-[95%] p-[7%] sm:w-[94%] m-auto border border-[5px] border-gray-400">
+              <img
+                src="/projectWeb/projectUHB.png"
+                className="w-full"
+                alt="gambar webiste project akbar"
+              />
+            </div>
           </div>
         </main>
       </div>

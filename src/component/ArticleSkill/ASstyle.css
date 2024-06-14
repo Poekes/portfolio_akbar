@@ -1,0 +1,17 @@
+.AUpDown{
+  top: 0;
+  animation: AUD 1s ease forwards;
+  -webkit-animation: AUD 1s ease forwards;
+}
+
+@keyframes AUD{
+  0%{
+    top: 0;
+  }
+  50%{
+    top: -20px;
+  }
+  100%{
+    top: 0;
+  }
+}
