@@ -14,7 +14,9 @@ function ArticleSkills() {
       boxS.childNodes[index].classList.remove("AUpDown");
     }, 1000);
   };
+
   useEffect(() => {
+    console.log(import.meta.env.VITE_USERNAME);
     setInterval(() => {
       animationAUD_play(0);
       setTimeout(() => {
