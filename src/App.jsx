@@ -73,15 +73,20 @@ function App() {
     }
 
     if (offsetAnimation.LKS1 < positionScrl) {
+      document.getElementById("LKS1").parentElement.style.overflow = "visible";
       animationApsRunning("#LKS1", "1.6s");
     }
     if (offsetAnimation.UHB < positionScrl) {
       animationApsRunning("#UHB", "1.6s");
+      document.getElementById("UHB").parentElement.style.overflow = "visible";
     }
     if (offsetAnimation.LKS2 < positionScrl) {
       animationApsRunning("#LKS2", "1.6s");
+      document.getElementById("LKS2").parentElement.style.overflow = "visible";
     }
     if (offsetAnimation.piagam < positionScrl) {
+      document.getElementById("piagam").parentElement.style.overflow =
+        "visible";
       animationApsRunning("#piagam", "1.4s");
     }
     if (offsetAnimation.BXS < positionScrl) {
@@ -146,6 +151,7 @@ function App() {
     const bulan = sDate.getMonth();
     const hari = sDate.getDate();
     setTimeKoding(`Sekitar  ${tahun} Tahun, ${bulan} Bulan, ${hari} Hari`);
+    console.log(import.meta.env.VITE_SCRET_API);
   }, []);
 
   let valueContext = {
@@ -180,14 +186,37 @@ function App() {
             {/* piagam */}
             <PrestasiMe />
           </div>
-          <div className="  relative top-[-60px]">
-            <h1 className="text-center pt-0 mt-0 m-6">project saya</h1>
-            <div className="w-[95%] p-[7%] sm:w-[94%] m-auto border border-[5px] border-gray-400">
+          <div className="  relative top-0 lg:top-[-60px]">
+            <div className="relative w-[95%] p-[7%] sm:w-[94%] m-auto pb-0 border-gray-400">
+              <div className="absolute w-[55%] h-[24%] text-gray-200  border-t-4 border-l-4 border-gray-400  top-0 left-0">
+                <p
+                  className=" text-md text-nowrap"
+                  style={{ letterSpacing: "2px" }}
+                >
+                  Project UHB Stundent Competition
+                </p>
+              </div>
               <img
                 src="/projectWeb/projectUHB.png"
                 className="w-full"
                 alt="gambar webiste project akbar"
               />
+            </div>
+            <div className="border-b-4 border-r-4 border-gray-400 text-gray-200 text-center w-[95%] sm:w-[94%] p-4 pt-2 m-auto">
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Ducimus incidunt illo commodi at porro nihil ullam neque, error
+                culpa quisquam dignissimos, impedit eos? Nostrum sed pariatur
+                minus, animi est impedit quos id! Quidem mollitia eius autem
+                placeat maiores ut, nemo minima nihil vitae unde eligendi non
+                expedita quod consequatur earum, inventore possimus repellendus,
+                asperiores ad ab repellat eveniet amet sapiente omnis!
+                Voluptatibus, ut? Consequuntur rerum quaerat et suscipit qui
+                veniam quas. Voluptas dolorem nesciunt nobis, eligendi non
+                sapiente repudiandae consectetur blanditiis impedit optio fugit
+                sed tenetur, dolorum iste reprehenderit odio, ex cumque
+                architecto accusamus commodi vel suscipit. Fugit, enim sit?
+              </p>
             </div>
           </div>
         </main>

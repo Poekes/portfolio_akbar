@@ -152,7 +152,10 @@ function PrestasiMe() {
     }
   };
   return (
-    <div className=" relative top-[0px] md:top-[-90px] pr-5 md:col-span-4 lg:col-span-2 xl:col-span-1">
+    <div
+      style={{ overflow: "hidden" }}
+      className=" relative top-[0px] md:top-[-90px] pr-5 md:col-span-4 lg:col-span-2 xl:col-span-1"
+    >
       <div
         id="piagam"
         className="m-auto relative AnimationRightLeft w-full   flex items-end justify-center"
@@ -256,10 +259,13 @@ function PrestasiMe() {
       </div>
       {/* teks Piagam */}
 
-      <div className=" w-full relative">
+      <div className=" w-full relative ">
         {/* LKS1 */}
         {/* hover:border-[#002fffaa] */}
-        <div className="m-5 ml-0 md:ml-5  w-[94%] relative z-30 ">
+        <div
+          className="m-5 ml-0 md:ml-5   w-[94%] relative z-30 "
+          style={{ overflow: "hidden" }}
+        >
           <div
             id="LKS1"
             onMouseMove={handleHoverToPiagam}
@@ -302,7 +308,10 @@ function PrestasiMe() {
         </div>
         {/* UHB */}
         {/* hover:border-[#ff3434ad] */}
-        <div className="m-5 ml-0 md:ml-5  w-[94%] relative z-20 ">
+        <div
+          className="m-5 ml-0 md:ml-5  w-[94%] relative z-20 "
+          style={{ overflow: "hidden" }}
+        >
           <div
             id="UHB"
             onMouseMove={handleHoverToPiagam}
@@ -345,7 +354,10 @@ function PrestasiMe() {
           </div>
         </div>
         {/* LKS2 */}
-        <div className="m-5 ml-0 md:ml-5  w-[94%] relative z-10 ">
+        <div
+          className="m-5 ml-0 md:ml-5  w-[94%] relative z-10 "
+          style={{ overflow: "hidden" }}
+        >
           <div
             id="LKS2"
             onMouseMove={handleHoverToPiagam}
