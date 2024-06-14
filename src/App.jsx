@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import {
   useState,
@@ -20,7 +21,6 @@ import isMobilePhone from "validator/lib/isMobilePhone";
 import { useDebounce } from "use-debounce";
 import ArticleSkills from "./component/ArticleSkill/ArticleSkills";
 export const SelectDataContext = createContext();
-
 let offsetAnimation = {};
 
 const offsetTopBody = (elementDom, numberOffset = 0) => {
@@ -95,6 +95,16 @@ function App() {
     }
   };
 
+  const login = (username, password) => {
+    if (username == import.meta.env.VITE_USERNAME) {
+      if (password == import.meta.env.VITE_PASSWORD) {
+        console.log("berhasil login");
+        return;
+      }
+    }
+    return console.log("login gagal");
+  };
+
   useLayoutEffect(() => {
     if (isMobilePhone("08127361821736e")) {
       console.log("no telp benar");
@@ -151,7 +161,8 @@ function App() {
     const bulan = sDate.getMonth();
     const hari = sDate.getDate();
     setTimeKoding(`Sekitar  ${tahun} Tahun, ${bulan} Bulan, ${hari} Hari`);
-    console.log(import.meta.env.VITE_SCRET_API);
+    login("akbar", "akbar");
+    console.log(import.meta.env.VITE_USERNAME);
   }, []);
 
   let valueContext = {
