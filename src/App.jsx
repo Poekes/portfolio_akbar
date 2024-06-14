@@ -106,11 +106,6 @@ function App() {
   };
 
   useLayoutEffect(() => {
-    if (isMobilePhone("08127361821736e")) {
-      console.log("no telp benar");
-    } else {
-      console.log("no telp salah");
-    }
     setTimeout(() => {
       const c1 = offsetTopBody(document.getElementById("c1").parentElement);
       const p1 = offsetTopBody(document.getElementById("p1").parentElement);
