@@ -1,0 +1,40 @@
+.ADownUp{
+  opacity: 0;
+  bottom: -300px;
+  animation: ADP 1s ease forwards paused;
+  -webkit-animation: ADP 1s ease forwards paused;
+}
+
+@keyframes ADP {
+  0%{
+    opacity: 0;
+    bottom:-300px;
+
+  }
+  100%{
+    opacity: 1;
+    bottom:0;
+  }
+}
+
+.AAUpDown{
+  opacity: 0;
+  top: -200px;
+  animation: AAUD 1s ease forwards paused;
+  -webkit-animation: AAUD 1s ease forwards paused;
+}
+
+@keyframes AAUD {
+  0%{
+    opacity: 0;
+    top: -200px;
+  }
+  40%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+    top: 0px;
+
+  }
+}

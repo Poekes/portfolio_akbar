@@ -16,7 +16,6 @@ function ArticleSkills() {
   };
 
   useEffect(() => {
-    console.log(import.meta.env.VITE_USERNAME);
     setInterval(() => {
       animationAUD_play(0);
       setTimeout(() => {

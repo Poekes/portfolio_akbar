@@ -14,22 +14,15 @@ import {
   WINDOW_ONSCROLL_SC,
   WINDOW_ONRIZE_SC,
 } from "./component/SCROLLING/ScrollingCustom";
-import piagamLKS1 from "../public/Piagam/PiagamLKS1.png";
 import HeaderImgName from "./component/HeaderImgName/HeaderImgName";
 import PrestasiMe from "./component/Prestasi/PrestasiMe";
 import isMobilePhone from "validator/lib/isMobilePhone";
 import { useDebounce } from "use-debounce";
 import ArticleSkills from "./component/ArticleSkill/ArticleSkills";
+import offsetTopBody from "./fnc/offsetTopBody";
+import ShowProject from "./component/ShowProject/ShowProject";
 export const SelectDataContext = createContext();
 let offsetAnimation = {};
-
-const offsetTopBody = (elementDom, numberOffset = 0) => {
-  let newNumberOffset = elementDom.offsetTop + numberOffset;
-  if (elementDom.id == "body") {
-    return newNumberOffset;
-  }
-  return offsetTopBody(elementDom.offsetParent, newNumberOffset);
-};
 
 function App() {
   // state khusus ScrollingCustom.jsx (start)
@@ -93,16 +86,16 @@ function App() {
       document.getElementById("boxSkill").style.opacity = 1;
       document.getElementById("awnS").style.opacity = 1;
     }
-  };
-
-  const login = (username, password) => {
-    if (username == import.meta.env.VITE_USERNAME) {
-      if (password == import.meta.env.VITE_PASSWORD) {
-        console.log("berhasil login");
-        return;
-      }
+    if (offsetAnimation.SP < positionScrl) {
+      document.getElementById("showProject").parentElement.style.overflow =
+        "visible";
+      animationApsRunning("#showProject", "1s");
     }
-    return console.log("login gagal");
+    if (offsetAnimation.TextSP < positionScrl) {
+      document.getElementById("textSP").parentElement.style.overflow =
+        "visible";
+      animationApsRunning("#textSP", "1s");
+    }
   };
 
   useLayoutEffect(() => {
@@ -116,6 +109,12 @@ function App() {
       const BXS = offsetTopBody(
         document.getElementById("boxSkill").parentElement
       );
+      const SP = offsetTopBody(
+        document.getElementById("showProject").parentElement
+      );
+      const TextSP = offsetTopBody(
+        document.getElementById("textSP").parentElement
+      );
       offsetAnimation = {
         c1: c1,
         p1: p1,
@@ -124,9 +123,10 @@ function App() {
         UHB: UHB,
         LKS2: LKS2 - 20,
         BXS: BXS,
+        SP: SP + 200,
+        TextSP: TextSP - 50,
       };
       ifscrol();
-      console.log(offsetAnimation.LKS1);
     }, 200);
     window.onkeydown = (e) => {
       if (e.key == "e") {
@@ -147,7 +147,6 @@ function App() {
     window.onscroll = (e) => {
       WINDOW_ONSCROLL_SC();
       ifscrol();
-      // console.log(window.scrollY + window.innerHeight - 200);
     };
     const latesDate = new Date("2022 15 jan");
     const nowDate = new Date();
@@ -156,8 +155,6 @@ function App() {
     const bulan = sDate.getMonth();
     const hari = sDate.getDate();
     setTimeKoding(`Sekitar  ${tahun} Tahun, ${bulan} Bulan, ${hari} Hari`);
-    login("akbar", "akbar");
-    console.log(import.meta.env.VITE_USERNAME);
   }, []);
 
   let valueContext = {
@@ -192,39 +189,7 @@ function App() {
             {/* piagam */}
             <PrestasiMe />
           </div>
-          <div className="  relative top-0 lg:top-[-60px]">
-            <div className="relative w-[95%] p-[7%] sm:w-[94%] m-auto pb-0 border-gray-400">
-              <div className="absolute w-[55%] h-[24%] text-gray-200  border-t-4 border-l-4 border-gray-400  top-0 left-0">
-                <p
-                  className=" text-md text-nowrap"
-                  style={{ letterSpacing: "2px" }}
-                >
-                  Project UHB Stundent Competition
-                </p>
-              </div>
-              <img
-                src="/projectWeb/projectUHB.png"
-                className="w-full"
-                alt="gambar webiste project akbar"
-              />
-            </div>
-            <div className="border-b-4 border-r-4 border-gray-400 text-gray-200 text-center w-[95%] sm:w-[94%] p-4 pt-2 m-auto">
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Ducimus incidunt illo commodi at porro nihil ullam neque, error
-                culpa quisquam dignissimos, impedit eos? Nostrum sed pariatur
-                minus, animi est impedit quos id! Quidem mollitia eius autem
-                placeat maiores ut, nemo minima nihil vitae unde eligendi non
-                expedita quod consequatur earum, inventore possimus repellendus,
-                asperiores ad ab repellat eveniet amet sapiente omnis!
-                Voluptatibus, ut? Consequuntur rerum quaerat et suscipit qui
-                veniam quas. Voluptas dolorem nesciunt nobis, eligendi non
-                sapiente repudiandae consectetur blanditiis impedit optio fugit
-                sed tenetur, dolorum iste reprehenderit odio, ex cumque
-                architecto accusamus commodi vel suscipit. Fugit, enim sit?
-              </p>
-            </div>
-          </div>
+          <ShowProject />
         </main>
       </div>
     </SelectDataContext.Provider>
