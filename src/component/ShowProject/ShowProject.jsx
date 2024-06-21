@@ -6,12 +6,12 @@ const ShowProject = () => {
 
   return (
     <div
-      className=" relative top-0 lg:top-[-60px]"
+      className=" relative top-0 lg:top-[-60px] z-0"
       style={{ overflow: "hidden" }}
     >
       <div
         id="showProject"
-        className=" relative ADownUp z-20 w-[95%] p-[7%] pt-[21%] sm:pt-[10%] md:pt-[7%] sm:w-[94%] m-auto pb-0 border-gray-400"
+        className=" relative ADownUp text-gray-300 z-20 w-[95%] p-[7%] pt-[21%] sm:pt-[10%] md:pt-[7%] sm:w-[94%] m-auto pb-0 border-gray-400"
       >
         <div className="absolute w-[75%] h-[44%] sm:h-[34%] sm:w-[65%] md:w-[55%] md:h-[24%] text-gray-200  border-t-4 border-l-4 border-gray-400  top-0 left-0">
           <p
@@ -34,7 +34,7 @@ const ShowProject = () => {
       >
         <div
           id="textSP"
-          className="relative AAUpDown border-b-4 border-r-4 border-gray-400 text-gray-200 w-full p-4 pt-2"
+          className="relative AAUpDown border-b-4 border-r-4 text-gray-300 border-gray-400 w-full p-4 pt-2"
         >
           <p>
             yaap project ini di buat pada saat ajang lomba di UHB, dengan

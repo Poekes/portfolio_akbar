@@ -1,12 +1,6 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import {
-  useState,
-  useReducer,
-  useEffect,
-  createContext,
-  useLayoutEffect,
-} from "react";
+
+import { useState, createContext, useLayoutEffect } from "react";
 import "./App.css";
 import BlockAnimation from "./component/KotakAnimation/BlockAnimation";
 import {
@@ -16,11 +10,12 @@ import {
 } from "./component/SCROLLING/ScrollingCustom";
 import HeaderImgName from "./component/HeaderImgName/HeaderImgName";
 import PrestasiMe from "./component/Prestasi/PrestasiMe";
-import isMobilePhone from "validator/lib/isMobilePhone";
-import { useDebounce } from "use-debounce";
 import ArticleSkills from "./component/ArticleSkill/ArticleSkills";
 import offsetTopBody from "./fnc/offsetTopBody";
 import ShowProject from "./component/ShowProject/ShowProject";
+import Contact from "./component/Contact/Contact";
+import { useDebounce } from "use-debounce";
+import { ValidContact } from "./fnc/reducer/validContact";
 export const SelectDataContext = createContext();
 let offsetAnimation = {};
 
@@ -31,17 +26,25 @@ function App() {
   const [statisHeight, setStatisHeight] = useState("");
   // state khusus ScrollingCustom.jsx (end)
   const [timeKoding, setTimeKoding] = useState("");
-  // const [noTelp, setNoTelp] = useState("");
-  // const [telpD] = useDebounce(noTelp, 800);
-  // useEffect(() => {
-  //   if (isMobilePhone(telpD)) {
-  //     alert("no telp benar");
-  //   } else {
-  //     alert("no telp salah");
-  //   }
-  // }, [telpD]);
-  // state if scroll start
-  // state if scroll end
+  // state Contact start
+  const [noTelp, setNoTelp] = useState("");
+  const [stateName, setStateName] = useState("");
+  const [stateRequired, setStateRequired] = useState({
+    pos: 0,
+    msg: "",
+    valid: false,
+  });
+  const [stateEmail, setStateEmail] = useState("");
+  const [stateMessage, setStateMessage] = useState("");
+  const [stateSubject, setStateSubject] = useState("");
+
+  const [deb_name] = useDebounce(stateName, 500);
+  const [deb_email] = useDebounce(stateEmail, 700);
+  const [deb_subject] = useDebounce(stateSubject, 500);
+  const [deb_message] = useDebounce(stateMessage, 500);
+  const [deb_telp] = useDebounce(noTelp, 500);
+
+  // state Contact end
   // state prestasi start
   const [pid, setPid] = useState("");
   // state prestasi end
@@ -128,16 +131,7 @@ function App() {
       };
       ifscrol();
     }, 200);
-    window.onkeydown = (e) => {
-      if (e.key == "e") {
-        console.log("test");
-        const boxS = document.getElementById("boxSkill");
-        boxS.childNodes[0].classList.add("AUpDown");
-        setTimeout(() => {
-          boxS.childNodes[0].classList.remove("AUpDown");
-        }, 1000);
-      }
-    };
+    window.onkeydown = (e) => {};
 
     window.onresize = () => {
       WINDOW_ONRIZE_SC();
@@ -169,29 +163,55 @@ function App() {
     articleSkill: {
       timeK: [timeKoding, setTimeKoding],
     },
+    contact: {
+      formState: {
+        name: [stateName, setStateName],
+        req: [stateRequired, setStateRequired],
+        email: [stateEmail, setStateEmail],
+        subject: [stateSubject, setStateSubject],
+        message: [stateMessage, setStateMessage],
+        noTelp: [noTelp, setNoTelp],
+        deb: {
+          deb_name: deb_name,
+          deb_email: deb_email,
+          deb_telp: deb_telp,
+          deb_subject: deb_subject,
+          deb_message: deb_message,
+        },
+      },
+    },
   };
   return (
     <SelectDataContext.Provider value={valueContext}>
-      <div className="fixed top-0 left-0 right-0 bottom-0 z-10 mt-3 mr-3 sm:mr-10">
-        <BlockAnimation />
-      </div>
+      <ValidContact>
+        <div className="fixed top-0 left-0 right-0 bottom-0 z-10 mt-3 mr-3 sm:mr-10">
+          <BlockAnimation />
+        </div>
 
-      <div className="flex relative max-w-screen-2xl m-auto z-20 overflow-hidden">
-        <ScrollingCustom />
+        <div className="flex relative max-w-screen-2xl m-auto z-20 overflow-hidden">
+          <ScrollingCustom />
 
-        <main className="container  p-1 border-gray-400 border-t-8 mt-5 border-r-8   w-96">
-          {/* heading */}
-          <HeaderImgName />
-          {/* content */}
-          <div className="grid text-gray-300 grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
-            {/* content slide 1 */}
-            <ArticleSkills />
-            {/* piagam */}
-            <PrestasiMe />
-          </div>
-          <ShowProject />
-        </main>
-      </div>
+          <main className="container  p-1 border-gray-400 border-t-8 mt-5 border-r-8   w-96">
+            {/* heading */}
+            <HeaderImgName />
+            {/* content */}
+            <div className="grid text-gray-300 grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
+              {/* content slide 1 */}
+              <ArticleSkills />
+              {/* piagam */}
+              <PrestasiMe />
+            </div>
+            <ShowProject />
+            <Contact />
+
+            {/* footer */}
+            <div className="bg-gray-400 flex justify-center items-center text-slate-900 w-full h-10 mb-[110px]">
+              <p>@gmail.com</p>
+              <p>@instragamm</p>
+            </div>
+          </main>
+        </div>
+      </ValidContact>
     </SelectDataContext.Provider>
   );
 }

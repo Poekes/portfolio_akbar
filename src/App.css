@@ -23,7 +23,7 @@ body::-webkit-scrollbar {
 .container {
   width: 80%;
   /* overflow: hidden; */
-  height: 2200px;
+  /* height: 2200px; */
 }
 
 
