@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import { useState, createContext, useLayoutEffect } from "react";
+import { useState, createContext, useLayoutEffect, useRef } from "react";
 import "./App.css";
 import BlockAnimation from "./component/KotakAnimation/BlockAnimation";
 import {
@@ -99,6 +99,27 @@ function App() {
         "visible";
       animationApsRunning("#textSP", "1s");
     }
+    if (offsetAnimation.hc < positionScrl) {
+      document.getElementById("hc").style.opacity = 1;
+    }
+    if (offsetAnimation.bn < positionScrl) {
+      document.getElementById("boxName").style.opacity = 1;
+    }
+    if (offsetAnimation.be < positionScrl) {
+      document.getElementById("boxEmail").style.opacity = 1;
+    }
+    if (offsetAnimation.bs < positionScrl) {
+      document.getElementById("boxSubject").style.opacity = 1;
+    }
+    if (offsetAnimation.bbs < positionScrl) {
+      document.getElementById("boxSend").style.opacity = 1;
+    }
+    if (offsetAnimation.bt < positionScrl) {
+      document.getElementById("boxTelp").style.opacity = 1;
+    }
+    if (offsetAnimation.bm < positionScrl) {
+      document.getElementById("boxMessage").style.opacity = 1;
+    }
   };
 
   useLayoutEffect(() => {
@@ -118,6 +139,25 @@ function App() {
       const TextSP = offsetTopBody(
         document.getElementById("textSP").parentElement
       );
+      const hc = offsetTopBody(document.getElementById("hc").parentElement);
+      const bn = offsetTopBody(
+        document.getElementById("boxName").parentElement
+      );
+      const be = offsetTopBody(
+        document.getElementById("boxEmail").parentElement
+      );
+      const bs = offsetTopBody(
+        document.getElementById("boxSubject").parentElement
+      );
+      const bbs = offsetTopBody(
+        document.getElementById("boxSend").parentElement
+      );
+      const bt = offsetTopBody(
+        document.getElementById("boxTelp").parentElement
+      );
+      const bm = offsetTopBody(
+        document.getElementById("boxMessage").parentElement
+      );
       offsetAnimation = {
         c1: c1,
         p1: p1,
@@ -128,6 +168,13 @@ function App() {
         BXS: BXS,
         SP: SP + 200,
         TextSP: TextSP - 50,
+        hc: hc,
+        bn: bn,
+        be: be,
+        bt: bt + 10,
+        bm: bm + 30,
+        bs: bs + 10,
+        bbs: bbs,
       };
       ifscrol();
     }, 200);
@@ -184,18 +231,18 @@ function App() {
   return (
     <SelectDataContext.Provider value={valueContext}>
       <ValidContact>
-        <div className="fixed top-0 left-0 right-0 bottom-0 z-10 mt-3 mr-3 sm:mr-10">
+        <div className="fixed top-0 bottom-0 left-0 right-0 z-10 mt-3 mr-3 sm:mr-10">
           <BlockAnimation />
         </div>
 
-        <div className="flex relative max-w-screen-2xl m-auto z-20 overflow-hidden">
+        <div className="relative z-20 flex m-auto overflow-hidden max-w-screen-2xl">
           <ScrollingCustom />
 
-          <main className="container  p-1 border-gray-400 border-t-8 mt-5 border-r-8   w-96">
+          <main className="container p-1 mt-5 border-t-8 border-r-8 border-gray-400 w-96">
             {/* heading */}
             <HeaderImgName />
             {/* content */}
-            <div className="grid text-gray-300 grid-cols-1 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2 z-10">
+            <div className="z-10 grid grid-cols-1 text-gray-300 md:grid-cols-8 lg:grid-cols-4 xl:grid-cols-2">
               {/* content slide 1 */}
               <ArticleSkills />
               {/* piagam */}
@@ -205,9 +252,24 @@ function App() {
             <Contact />
 
             {/* footer */}
-            <div className="bg-gray-400 flex justify-center items-center text-slate-900 w-full h-10 mb-[110px]">
-              <p>@gmail.com</p>
-              <p>@instragamm</p>
+            <div className="bg-gray-400 flex justify-center gap-2 items-center text-slate-900 w-full h-10 mb-[110px]">
+              <div className="font-mono">Copyright ©2024 </div>
+              <div
+                className="flex items-center justify-center border-l-4 border-gray-700 cursor-pointer text-nowrap "
+                onClick={(e) => {
+                  window.open("https://www.instagram.com/poekess/");
+                }}
+              >
+                <div className="flex items-center justify-center pl-2 pr-1">
+                  <img
+                    src="logo/igLogo.png"
+                    className="saturate-0"
+                    alt=""
+                    width={18}
+                  />{" "}
+                </div>
+                <div className="hidden font-mono md:block">Poekes</div>
+              </div>
             </div>
           </main>
         </div>

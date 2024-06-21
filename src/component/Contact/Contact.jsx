@@ -243,8 +243,6 @@ const Contact = () => {
     } else {
       thiss.classList.remove("h-full");
     }
-
-    // thiss.classList.remove("h-full");
   };
 
   const handleChangeTelp = (event) => {
@@ -264,9 +262,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative p-1 space-y-6  text-gray-300">
-      <h1 className="font-mono text-4xl md:text-5xl pt-5 lg:pt-0">
-        __Contact_Me__{" "}
+    <div className="relative p-1 space-y-6 text-gray-300">
+      <h1
+        id="hc"
+        className="pt-5 font-mono text-4xl md:text-5xl lg:pt-0"
+        style={{ opacity: 0, transition: "1s" }}
+      >
+        Contact_Me__{" "}
       </h1>
       <form ref={form} onSubmit={handleContactSubmit}>
         <div
@@ -274,194 +276,238 @@ const Contact = () => {
         "
         >
           {/* name */}
-          <div
-            style={{ borderColor: svc.name.valid ? " red" : null }}
-            className=" flex flex-col justify-end h-8 col-span-7 md:col-span-4  bg-transparent border-r-2 border-b-2 border-gray-400"
-          >
-            <label
-              htmlFor="name"
-              className=" pl-2"
-              style={{ letterSpacing: ".8px" }}
-            >
-              Name{" "}
-              {svc.name.msg ? (
-                <span className="bg-red-900  ml-2 pl-2 pr-2 border border-red-700 ">
-                  {svc.name.msg}
-                </span>
-              ) : null}
-            </label>
-            <input
-              ref={name}
-              value={stateName}
-              onBlur={handleBlurInput}
-              onChange={(e) => {
-                setStateName((state) => {
-                  if (e.target.value.length > 37) {
-                    return state;
-                  }
-                  return e.target.value;
-                });
+          <div className="relative col-span-7 md:col-span-4">
+            <div
+              id="boxName"
+              style={{
+                transition: "1s",
+                opacity: 0,
+                borderColor: svc.name.valid ? " red" : null,
               }}
-              type="text"
-              name="name"
-              id="name"
-              className="w-full p-0 h-0  focus:p-4 focus:h-full focus:pl-2 pl-2  transition-all  bg-gray-800 focus:border-none focus:outline-none"
-              autoComplete="off"
-            />
+              className="flex flex-col justify-end h-8 bg-transparent border-b-2 border-r-2 border-gray-400 "
+            >
+              <label
+                htmlFor="name"
+                className="pl-2 "
+                style={{ letterSpacing: ".8px" }}
+              >
+                Name{" "}
+                {svc.name.msg ? (
+                  <span className="pl-2 pr-2 ml-2 bg-red-900 border border-red-700 ">
+                    {svc.name.msg}
+                  </span>
+                ) : null}
+              </label>
+              <input
+                ref={name}
+                value={stateName}
+                onBlur={handleBlurInput}
+                onChange={(e) => {
+                  setStateName((state) => {
+                    if (e.target.value.length > 37) {
+                      return state;
+                    }
+                    return e.target.value;
+                  });
+                }}
+                type="text"
+                name="name"
+                id="name"
+                className="w-full h-0 p-0 pl-2 transition-all bg-gray-800 focus:p-4 focus:h-full focus:pl-2 focus:border-none focus:outline-none"
+                autoComplete="off"
+              />
+            </div>
           </div>
+
           {/* email */}
-          <div
-            style={{ borderColor: svc.email.valid ? " red" : null }}
-            className=" flex flex-col pt-6 col-span-7 md:col-span-3 justify-end h-8  bg-transparent border-r-2 border-b-2 border-gray-400"
-          >
-            <label
-              htmlFor="email"
-              className=" pl-2"
-              style={{ letterSpacing: ".8px" }}
-            >
-              Email{" "}
-              {svc.email.msg && (
-                <span className="bg-red-900  ml-2 pl-2 pr-2 border border-red-700 ">
-                  {svc.email.msg}
-                </span>
-              )}
-            </label>
-            <input
-              onBlur={handleBlurInput}
-              value={stateEmail}
-              onChange={(e) => {
-                setStateEmail((state) => {
-                  if (e.target.value.length > 60) {
-                    return state;
-                  }
-                  return e.target.value;
-                });
+          <div className="relative col-span-7 md:col-span-3">
+            <div
+              id="boxEmail"
+              style={{
+                transition: "1s",
+                opacity: 0,
+                borderColor: svc.email.valid ? " red" : null,
               }}
-              autoComplete="off"
-              type="text"
-              name="email"
-              id="email"
-              className="w-full p-0 h-0  focus:p-4 focus:h-full focus:pl-2 pl-2  transition-all  bg-gray-800 focus:border-none focus:outline-none"
-            />
+              className="flex flex-col justify-end h-8 pt-6 bg-transparent border-b-2 border-r-2 border-gray-400 "
+            >
+              <label
+                htmlFor="email"
+                className="pl-2 "
+                style={{ letterSpacing: ".8px" }}
+              >
+                Email{" "}
+                {svc.email.msg && (
+                  <span className="pl-2 pr-2 ml-2 bg-red-900 border border-red-700 ">
+                    {svc.email.msg}
+                  </span>
+                )}
+              </label>
+              <input
+                onBlur={handleBlurInput}
+                value={stateEmail}
+                onChange={(e) => {
+                  setStateEmail((state) => {
+                    if (e.target.value.length > 60) {
+                      return state;
+                    }
+                    return e.target.value;
+                  });
+                }}
+                autoComplete="off"
+                type="text"
+                name="email"
+                id="email"
+                className="w-full h-0 p-0 pl-2 transition-all bg-gray-800 focus:p-4 focus:h-full focus:pl-2 focus:border-none focus:outline-none"
+              />
+            </div>
           </div>
+
           {/* subject */}
-          <div
-            style={{ borderColor: svc.subject.valid ? " red" : null }}
-            className=" flex flex-col pt-6 col-span-7 md:col-span-4 justify-end h-8  bg-transparent border-r-2 border-b-2 border-gray-400"
-          >
-            <label
-              htmlFor="subject"
-              className=" pl-2"
-              style={{ letterSpacing: ".8px" }}
-            >
-              Subject{" "}
-              {svc.subject.msg && (
-                <span className="bg-red-900  ml-2 pl-2 pr-2 border border-red-700 ">
-                  {svc.subject.msg}
-                </span>
-              )}
-            </label>
-            <input
-              value={stateSubject}
-              onBlur={handleBlurInput}
-              onChange={(e) => {
-                setStateSubject((state) => {
-                  if (e.target.value.length > 67) {
-                    return state;
-                  }
-                  return e.target.value;
-                });
+          <div className="relative col-span-7 md:col-span-4">
+            <div
+              id="boxSubject"
+              style={{
+                transition: "1s",
+                opacity: 0,
+                borderColor: svc.subject.valid ? " red" : null,
               }}
-              type="text"
-              autoComplete="off"
-              name="subject"
-              id="subject"
-              className="w-full p-0 h-0  focus:p-4 focus:h-full focus:pl-2 pl-2  transition-all  bg-gray-800 focus:border-none focus:outline-none"
-            />
+              className="flex flex-col justify-end h-8 col-span-7 pt-6 bg-transparent border-b-2 border-r-2 border-gray-400 md:col-span-4"
+            >
+              <label
+                htmlFor="subject"
+                className="pl-2 "
+                style={{ letterSpacing: ".8px" }}
+              >
+                Subject{" "}
+                {svc.subject.msg && (
+                  <span className="pl-2 pr-2 ml-2 bg-red-900 border border-red-700 ">
+                    {svc.subject.msg}
+                  </span>
+                )}
+              </label>
+              <input
+                value={stateSubject}
+                onBlur={handleBlurInput}
+                onChange={(e) => {
+                  setStateSubject((state) => {
+                    if (e.target.value.length > 67) {
+                      return state;
+                    }
+                    return e.target.value;
+                  });
+                }}
+                type="text"
+                autoComplete="off"
+                name="subject"
+                id="subject"
+                className="w-full h-0 p-0 pl-2 transition-all bg-gray-800 focus:p-4 focus:h-full focus:pl-2 focus:border-none focus:outline-none"
+              />
+            </div>
           </div>
           {/* no telp */}
-          <div
-            style={{ borderColor: svc.noTelp.valid ? " red" : null }}
-            className=" flex flex-col pt-6 col-span-7 md:col-span-3 justify-end h-8  bg-transparent border-r-2 border-b-2 border-gray-400"
-          >
-            <label
-              htmlFor="noTelp"
-              className=" pl-2 text-nowrap"
-              style={{ letterSpacing: ".8px" }}
+          <div className="relative col-span-7 md:col-span-3">
+            <div
+              id="boxTelp"
+              style={{
+                transition: "1s",
+                opacity: 0,
+                borderColor: svc.noTelp.valid ? " red" : null,
+              }}
+              className="flex flex-col justify-end h-8 col-span-7 pt-6 bg-transparent border-b-2 border-r-2 border-gray-400 md:col-span-3"
             >
-              Phone Number{" "}
-              {svc.noTelp.msg && (
-                <span className="bg-red-900  ml-2 pl-2 pr-2 border border-red-700 ">
-                  {svc.noTelp.msg}
-                </span>
-              )}
-            </label>
-            <input
-              value={noTelp}
-              onBlur={handleBlurInput}
-              onChange={handleChangeTelp}
-              type="text"
-              name="noTelp"
-              min={0}
-              id="noTelp"
-              className="w-full p-0 h-0  focus:p-4 focus:h-full focus:pl-2 pl-2  transition-all  bg-gray-800 focus:border-none focus:outline-none"
-              autoComplete="off"
-            />
+              <label
+                htmlFor="noTelp"
+                className="pl-2 text-nowrap"
+                style={{ letterSpacing: ".8px" }}
+              >
+                Phone Number{" "}
+                {svc.noTelp.msg && (
+                  <span className="pl-2 pr-2 ml-2 bg-red-900 border border-red-700 ">
+                    {svc.noTelp.msg}
+                  </span>
+                )}
+              </label>
+              <input
+                value={noTelp}
+                onBlur={handleBlurInput}
+                onChange={handleChangeTelp}
+                type="text"
+                name="noTelp"
+                min={0}
+                id="noTelp"
+                className="w-full h-0 p-0 pl-2 transition-all bg-gray-800 focus:p-4 focus:h-full focus:pl-2 focus:border-none focus:outline-none"
+                autoComplete="off"
+              />
+            </div>
           </div>
+
           {/* text message */}
-          <div
-            style={{ borderColor: svc.text.valid ? " red" : null }}
-            className=" flex flex-col col-span-7   justify-start   bg-transparent border-r-2 border-b-2 border-gray-400"
-          >
-            <label
-              htmlFor="message"
-              className=" pl-2"
-              style={{ letterSpacing: ".8px" }}
+          <div className="relative col-span-7 ">
+            <div
+              id="boxMessage"
+              style={{
+                transition: "1s",
+                opacity: 0,
+                borderColor: svc.text.valid ? " red" : null,
+              }}
+              className="flex flex-col justify-start col-span-7 bg-transparent border-b-2 border-r-2 border-gray-400 "
             >
-              Message{" "}
-              {svc.text.msg && (
-                <span className="bg-red-900  ml-2 pl-2 pr-2 border border-red-700 ">
-                  {svc.text.msg}
-                </span>
-              )}
-            </label>
-            <textarea
-              onBlur={handleBlurInput}
-              value={stateMessage}
-              autoComplete="off"
-              onChange={(e) => {
-                setStateMessage((state) => {
-                  if (e.target.value.length > 10500) {
-                    return state;
-                  }
-                  return e.target.value;
-                });
-              }}
-              name="message"
-              onFocus={(event) => {
-                event.target.style = "8rem";
-              }}
-              id="message"
-              className="w-full p-0   max-h-52 h-0 focus:h-32  focus:p-4  transition-all  bg-gray-800 focus:border-none focus:outline-none"
-            ></textarea>
+              <label
+                htmlFor="message"
+                className="pl-2 "
+                style={{ letterSpacing: ".8px" }}
+              >
+                Message{" "}
+                {svc.text.msg && (
+                  <span className="pl-2 pr-2 ml-2 bg-red-900 border border-red-700 ">
+                    {svc.text.msg}
+                  </span>
+                )}
+              </label>
+              <textarea
+                onBlur={handleBlurInput}
+                value={stateMessage}
+                autoComplete="off"
+                onChange={(e) => {
+                  setStateMessage((state) => {
+                    if (e.target.value.length > 10500) {
+                      return state;
+                    }
+                    return e.target.value;
+                  });
+                }}
+                name="message"
+                onFocus={(event) => {
+                  event.target.style = "8rem";
+                }}
+                id="message"
+                className="w-full h-0 p-0 transition-all bg-gray-800 max-h-52 focus:h-32 focus:p-4 focus:border-none focus:outline-none"
+              ></textarea>
+            </div>
           </div>
         </div>
-        <div className="flex  justify-center  relative">
-          {stateRequired.valid && (
-            <div className="absolute top-[-42px]  font-mono bg-gradient-to-tr text-slate-200  flex justify-center items-center rounded-none from-gray-800 to-gray-800 border-[1px] border-b-[3px] border-r-[3px] border-gray-400 w-52 h-7">
-              <p style={{ letterSpacing: "1px" }} className="text-sm">
-                {/* <span className="text-yellow-300 text-xl inline-block">!</span>{" "} */}
-                {stateRequired.msg}{" "}
-                {/* <span className="text-yellow-300 text-lg inline-block ">!</span> */}
-              </p>
-            </div>
-          )}
-          <button
-            type="submit"
-            className="  rounded-none p-2 m-2 h-11 pl-9 pr-9 active:border-r-2 active:border-b-2 active:translate-y-[1px] active:translate-x-[1px] text-slate-300 border focus:border-slate-400 focus:outline-none focus:border-solid focus:border border-r-4 focus:border-r-4 border-b-[4px] focus:border-b-[4px]  border-slate-400 hover:border-slate-400 hover:text-slate-300 bg-gradient-to-r from-slate-700 to-slate-800 "
+        <div className="relative">
+          <div
+            className="relative flex justify-center"
+            id="boxSend"
+            style={{ transition: "1s", opacity: 0 }}
           >
-            Send
-          </button>
+            {stateRequired.valid && (
+              <div className="absolute top-[-42px]  font-mono bg-gradient-to-tr text-slate-200  flex justify-center items-center rounded-none from-gray-800 to-gray-800 border-[1px] border-b-[3px] border-r-[3px] border-gray-400 w-52 h-7">
+                <p style={{ letterSpacing: "1px" }} className="text-sm">
+                  {/* <span className="inline-block text-xl text-yellow-300">!</span>{" "} */}
+                  {stateRequired.msg}{" "}
+                  {/* <span className="inline-block text-lg text-yellow-300 ">!</span> */}
+                </p>
+              </div>
+            )}
+            <button
+              type="submit"
+              className="  rounded-none p-2 m-2 h-11 pl-9 pr-9 active:border-r-2 active:border-b-2 active:translate-y-[1px] active:translate-x-[1px] text-slate-300 border focus:border-slate-400 focus:outline-none focus:border-solid focus:border border-r-4 focus:border-r-4 border-b-[4px] focus:border-b-[4px]  border-slate-400 hover:border-slate-400 hover:text-slate-300 bg-gradient-to-r from-slate-700 to-slate-800 "
+            >
+              Send
+            </button>
+          </div>
         </div>
       </form>
     </div>
