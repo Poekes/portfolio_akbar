@@ -79,10 +79,9 @@ function ScrollingCustom() {
             className="relative border-2 border-gray-400 sm:ml-5 md:ml-10 opcAnm"
             style={{ height: statisHeight }}
             id="scrollbarCustom"
-            onMouseMove={handleScrolling}
+            // onMouseMove={handleScrolling}
           >
             <div
-              id="scrollBar"
               className="absolute bg-gray-400 scrollAnm "
               style={{ top: valueScroll }}
             ></div>
