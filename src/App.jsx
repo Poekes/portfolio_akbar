@@ -24,6 +24,7 @@ function App() {
   const [wh, setWh] = useState({ width: 0, height: 0 });
   const [valueScroll, setValueScroll] = useState("");
   const [statisHeight, setStatisHeight] = useState("");
+  const [scrollClicked, setScrollClicked] = useState(false);
   // state khusus ScrollingCustom.jsx (end)
   const [timeKoding, setTimeKoding] = useState("");
   // state Contact start
@@ -121,7 +122,14 @@ function App() {
       document.getElementById("boxMessage").style.opacity = 1;
     }
   };
-
+  const onmousemoveWindow = (e) => {
+    if (scrollClicked == true) {
+      console.log();
+    }
+  };
+  window.onmousemove = (e) => {
+    onmousemoveWindow(e);
+  };
   useLayoutEffect(() => {
     setTimeout(() => {
       const c1 = offsetTopBody(document.getElementById("c1").parentElement);
@@ -180,6 +188,18 @@ function App() {
     }, 200);
     window.onkeydown = (e) => {};
 
+    // new fiture scorlling
+
+    window.onmouseup = (e) => {
+      setScrollClicked(false);
+      console.log("keluar");
+    };
+    window.onmousedown = (e) => {
+      if (e.target.id == "scrollBar") {
+        setScrollClicked(true);
+        console.log("effek scrolling mau jalan nih");
+      }
+    };
     window.onresize = () => {
       WINDOW_ONRIZE_SC();
       ifscrol();
@@ -203,6 +223,7 @@ function App() {
       wh: [wh, setWh],
       vs: [valueScroll, setValueScroll],
       staticHeight: [statisHeight, setStatisHeight],
+      scrollingClicked: [scrollClicked, setScrollClicked],
     },
     prestasi: {
       pid: [pid, setPid],

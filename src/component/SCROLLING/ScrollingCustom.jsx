@@ -11,6 +11,8 @@ function ScrollingCustom() {
   const [wh, setWh] = contextAll.scrolling.wh;
   const [valueScroll, setValueScroll] = contextAll.scrolling.vs;
   const [statisHeight, setStatisHeight] = contextAll.scrolling.staticHeight;
+  const [scrollClicked, setScrollClicked] =
+    contextAll.scrolling.scrollingClicked;
 
   const handleScrolling = (event) => {
     if (event.buttons == 1) {
@@ -64,23 +66,24 @@ function ScrollingCustom() {
   }, []);
 
   return (
-    <div id="scroll-box" className="scrolling  w-16 sm:w-32 md:w-44 ">
+    <div id="scroll-box" className="w-16 scrolling sm:w-32 md:w-44 ">
       <div
-        className=" text-white  fixed "
+        className="fixed text-white "
         style={{ width: wh.width, height: "100%" }}
       >
         <div
           style={{ width: "100%", height: "100%" }}
-          className="flex justify-center items-center overflow-hidden"
+          className="flex items-center justify-center overflow-hidden"
         >
           <div
-            className="border-gray-400 sm:ml-5 md:ml-10 border-2 relative opcAnm"
+            className="relative border-2 border-gray-400 sm:ml-5 md:ml-10 opcAnm"
             style={{ height: statisHeight }}
             id="scrollbarCustom"
             onMouseMove={handleScrolling}
           >
             <div
-              className="scrollAnm  absolute bg-gray-400 "
+              id="scrollBar"
+              className="absolute bg-gray-400 scrollAnm "
               style={{ top: valueScroll }}
             ></div>
           </div>
