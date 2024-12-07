@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { useContext, useLayoutEffect } from "react";
+import { useContext, useLayoutEffect, useRef } from "react";
 import { SelectDataContext } from "../../App";
 import "./scrollingCustom.css";
 
-let WINDOW_ONSCROLL_SC, WINDOW_ONRIZE_SC;
+let WINDOW_ONSCROLL_SC, WINDOW_ONRIZE_SC, SCROLLING_MOVE_W;
 
 function ScrollingCustom() {
   const contextAll = useContext(SelectDataContext);
@@ -13,6 +13,8 @@ function ScrollingCustom() {
   const [statisHeight, setStatisHeight] = contextAll.scrolling.staticHeight;
   const [scrollClicked, setScrollClicked] =
     contextAll.scrolling.scrollingClicked;
+
+  const elementScrollBar = useRef();
 
   const handleScrolling = (event) => {
     if (event.buttons == 1) {
@@ -65,6 +67,50 @@ function ScrollingCustom() {
     WINDOW_ONSCROLL_SC = onscrollCustom;
   }, []);
 
+  const onmousemoveWindow = (e, posY) => {
+    if (scrollClicked) {
+      elementScrollBar.current.classList.add("bg-gray-100", "scale-105");
+
+      const scrollCustom = document.getElementById("scrollbarCustom");
+      const lebarScrollCustom = scrollCustom.clientHeight;
+      const jarakBoxScroll = scrollCustom.offsetTop;
+      const tinggiLayar = window.innerHeight;
+
+      let posisiPointMove = posY - jarakBoxScroll;
+      if (posisiPointMove < 0) {
+        posisiPointMove = 0;
+      }
+
+      let persentaseStyleTop = Math.floor(
+        eval(`${posisiPointMove / lebarScrollCustom}*100`)
+      );
+
+      if (persentaseStyleTop > 100) {
+        persentaseStyleTop = 100;
+      }
+
+      const scrollPos = Math.floor(
+        eval(
+          `${
+            document.body.scrollHeight - window.innerHeight
+          }*${persentaseStyleTop}/100`
+        )
+      );
+      window.scrollTo(0, scrollPos, "smooth");
+    }
+  };
+  const handleClickScrollBar = (e) => {
+    if (e.type == "touchstart") {
+      setScrollClicked(true);
+      console.log("tuoch masuk");
+    } else {
+      if (e.buttons == 1) {
+        setScrollClicked(true);
+      }
+    }
+  };
+  SCROLLING_MOVE_W = onmousemoveWindow;
+
   return (
     <div id="scroll-box" className="w-16 scrolling sm:w-32 md:w-44 ">
       <div
@@ -82,7 +128,10 @@ function ScrollingCustom() {
             // onMouseMove={handleScrolling}
           >
             <div
-              className="absolute bg-gray-400 scrollAnm "
+              ref={elementScrollBar}
+              onTouchStart={handleClickScrollBar}
+              onMouseDown={handleClickScrollBar}
+              className="absolute bg-gray-400 active:bg-gray-100 active:scale-105 scrollAnm "
               style={{ top: valueScroll }}
             ></div>
           </div>
@@ -92,4 +141,9 @@ function ScrollingCustom() {
   );
 }
 
-export { ScrollingCustom, WINDOW_ONSCROLL_SC, WINDOW_ONRIZE_SC };
+export {
+  ScrollingCustom,
+  WINDOW_ONSCROLL_SC,
+  WINDOW_ONRIZE_SC,
+  SCROLLING_MOVE_W,
+};

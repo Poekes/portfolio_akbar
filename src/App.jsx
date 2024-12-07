@@ -7,6 +7,7 @@ import {
   ScrollingCustom,
   WINDOW_ONSCROLL_SC,
   WINDOW_ONRIZE_SC,
+  SCROLLING_MOVE_W,
 } from "./component/SCROLLING/ScrollingCustom";
 import HeaderImgName from "./component/HeaderImgName/HeaderImgName";
 import PrestasiMe from "./component/Prestasi/PrestasiMe";
@@ -122,13 +123,11 @@ function App() {
       document.getElementById("boxMessage").style.opacity = 1;
     }
   };
-  const onmousemoveWindow = (e) => {
-    if (scrollClicked == true) {
-      console.log();
-    }
+  window.ontouchmove = (e) => {
+    SCROLLING_MOVE_W(e, e.changedTouches[0].clientY);
   };
   window.onmousemove = (e) => {
-    onmousemoveWindow(e);
+    SCROLLING_MOVE_W(e, e.clientY);
   };
   useLayoutEffect(() => {
     setTimeout(() => {
@@ -189,17 +188,19 @@ function App() {
     window.onkeydown = (e) => {};
 
     // new fiture scorlling
-
-    window.onmouseup = (e) => {
+    window.ontouchend = (e) => {
       setScrollClicked(false);
-      console.log("keluar");
+      document
+        .getElementById("scrollbarCustom")
+        .children[0].classList.remove("bg-gray-100", "scale-105");
     };
-    window.onmousedown = (e) => {
-      if (e.target.id == "scrollBar") {
-        setScrollClicked(true);
-        console.log("effek scrolling mau jalan nih");
-      }
+    window.onmouseup = (e) => {
+      document
+        .getElementById("scrollbarCustom")
+        .children[0].classList.remove("bg-gray-100", "scale-105");
+      setScrollClicked(false);
     };
+
     window.onresize = () => {
       WINDOW_ONRIZE_SC();
       ifscrol();
